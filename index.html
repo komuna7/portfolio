@@ -5,101 +5,127 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Māris Mīlgrāvis</title>
 <meta name="description" content="Visual and motion designer. Title sequences, stage visuals and commercials.">
-<meta name="theme-color" content="#7f0000">
+<meta name="theme-color" content="#000000">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500;600&family=Barlow:wght@400;500&display=swap">
+<link rel="preconnect" href="https://www.youtube-nocookie.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500&family=Barlow:wght@400;500&display=swap">
 <style>
-/* Concept: a vertical feed on grey paper, with the filter under the thumb. */
-:root{--paper:#e2e2e2;--ink:#000;--soft:#454545;--line:#b4b4b4;--white:#fff;--red:#7f0000;--display:"Dosis","Arial Narrow",sans-serif;--body:"Barlow","Segoe UI",Arial,sans-serif;--l:max(18px,env(safe-area-inset-left,0px));--r:max(18px,env(safe-area-inset-right,0px));--dock:60px}
+/* Concept: the work moves as you reach it. Big thin titles, tiny name, black room. */
+:root{--black:#000;--white:#fff;--grey:#9a9a9a;--paper:#d9d9d9;--line:#2e2e2e;--red:#7f0000;--display:"Dosis","Arial Narrow",sans-serif;--body:"Barlow","Segoe UI",Arial,sans-serif;--l:max(16px,env(safe-area-inset-left,0px));--r:max(16px,env(safe-area-inset-right,0px));color-scheme:dark}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-html{background:var(--paper);-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.45 var(--body);padding-bottom:calc(var(--dock) + env(safe-area-inset-bottom,0px));-webkit-font-smoothing:antialiased}
-a{color:inherit}
+html{background:var(--black);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--black);color:var(--white);font:400 16px/1.45 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
-:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+:focus-visible{outline:2px solid var(--white);outline-offset:2px}
 
-.intro{background:var(--red);color:var(--white)}
-.intro .in{max-width:1280px;margin:0 auto;padding:22px var(--r) 30px var(--l);display:grid;gap:30px}
-h1{display:inline-grid;justify-self:start;gap:6px;margin:0;font:400 20px/1.25 var(--display);letter-spacing:.08em}
+.bar{position:absolute;z-index:5;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:flex-start;padding:calc(14px + env(safe-area-inset-top,0px)) var(--r) 0 var(--l);mix-blend-mode:difference;color:var(--white)}
+h1{display:inline-grid;gap:4px;margin:0;font:400 16px/1.2 var(--display);letter-spacing:.07em}
 h1::before{content:"";height:2px;background:currentColor;border-radius:9px}
-.lead{margin:0;max-width:21ch;font:300 clamp(33px,9.4vw,60px)/1.08 var(--display);text-wrap:balance}
-.sub{margin:-16px 0 0;max-width:42ch;color:#f4dddd}
+.bar nav{display:flex;gap:18px;font:500 16px/1.2 var(--display);padding-top:6px}
 
-main{max-width:1280px;margin:0 auto}
-.group{padding-top:30px}
-.group h2{position:sticky;top:0;z-index:3;margin:0 0 14px;padding:10px var(--r) 9px var(--l);background:var(--paper);font:400 25px/1.15 var(--display);letter-spacing:.02em;border-bottom:1px solid var(--ink)}
-.cards{display:grid;grid-template-columns:minmax(0,1fr);gap:30px}
-.card{display:grid;gap:10px;align-content:start;min-width:0}
-.poster{position:relative;display:block;aspect-ratio:16/9;max-width:100%;background:#262626;overflow:hidden}
-.poster img,.poster iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;object-fit:cover}
-.badge{position:absolute;left:0;bottom:0;display:inline-flex;align-items:center;gap:7px;min-height:34px;padding:0 11px;background:var(--red);color:var(--white);font:500 14px var(--body);font-variant-numeric:tabular-nums}
-.badge svg{width:10px;height:12px;fill:currentColor}
-.poster:hover .badge{background:var(--ink)}
-.meta{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1px 14px;padding:0 var(--r) 0 var(--l);align-items:baseline}
-.meta h3{margin:0;font:500 22px/1.18 var(--display)}
-.year{font-size:14px;color:var(--soft);font-variant-numeric:tabular-nums}
-.meta p{grid-column:1/-1;margin:0;color:var(--soft);font-size:15px;line-height:1.35}
-.alt{grid-column:1/-1;justify-self:start;margin-top:5px;padding:3px 0;font-weight:500;font-size:15px;color:var(--red);text-underline-offset:3px}
-.show-all .dup{display:none}
-.more{list-style:none;margin:26px 0 0;padding:0 var(--r) 0 var(--l)}
-.more li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1px 14px;padding:10px 0;border-top:1px solid var(--line)}
-.more b{font:500 19px/1.2 var(--display)}.more b a{color:var(--red);text-underline-offset:3px}
-.more span{grid-column:1/-1;grid-row:2;color:var(--soft);font-size:15px}
-.more em{font-style:normal;font-size:14px;color:var(--soft)}
+.hero{position:relative;display:flex;flex-direction:column;height:100svh;min-height:520px;background:var(--black)}
+.hero .frame{flex:1;min-height:0;aspect-ratio:auto}
+.say{flex:none;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:14px;padding:14px var(--r) 16px var(--l)}
+.say p{margin:0;max-width:17em;font:300 clamp(27px,7.6vw,46px)/1.1 var(--display);text-wrap:balance}
 
-.about{max-width:1280px;margin:44px auto 0;padding:24px var(--r) 44px var(--l);display:grid;gap:26px;border-top:1px solid var(--ink)}
-.about h2{margin:0;font:400 25px/1.15 var(--display)}
-.about>p{margin:0;max-width:34ch;font:400 23px/1.3 var(--display)}
-.specs{display:grid;grid-template-columns:minmax(0,1fr);gap:15px;margin:0}
-.specs dt{font:600 16px/1.3 var(--display);color:var(--red)}
-.specs dd{margin:0;color:var(--ink)}
-.contact{background:var(--red);color:var(--white)}
-.contact .in{max-width:1280px;margin:0 auto;padding:34px var(--r) 40px var(--l);display:grid;gap:14px;justify-items:start}
-.contact h2{margin:0;font:400 25px/1.15 var(--display)}
-.mail{font:300 clamp(25px,7.3vw,52px)/1.15 var(--display);overflow-wrap:anywhere;user-select:all}
-.copy{min-height:46px;padding:0 22px;background:var(--white);color:var(--ink);font:600 17px var(--display)}
-.contact p{margin:0;color:#f4dddd}
+.frame{position:relative;display:block;width:100%;aspect-ratio:16/9;max-width:100%;overflow:hidden;background:#161616}
+.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:1;}
+.frame .cut{z-index:1;transition:none}
+.go{position:absolute;z-index:2;right:0;bottom:0;display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 13px;background:var(--red);color:var(--white);font:500 14px var(--body);font-variant-numeric:tabular-nums}
+.go svg{width:10px;height:12px;fill:currentColor}
+.frame:hover .go{background:var(--white);color:var(--black)}
+.play{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 15px;background:var(--red);font:500 14px var(--body);font-variant-numeric:tabular-nums;white-space:nowrap}
+.play svg{width:10px;height:12px;fill:currentColor}
+.play:hover{background:var(--white);color:var(--black)}
 
-.dock{position:fixed;left:0;right:0;bottom:0;z-index:20;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px);padding-bottom:env(safe-area-inset-bottom,0px);background:var(--ink);color:var(--white)}
-.dock button,.dock a{display:grid;place-items:center;height:var(--dock);font:500 16px var(--display);text-decoration:none;color:#c9c9c9}
-.dock [aria-pressed="true"]{background:var(--white);color:var(--ink)}
-.dock a{background:var(--red);color:var(--white)}
-.dock :focus-visible{outline:2px solid var(--white);outline-offset:-4px}
+.filter{position:sticky;top:0;z-index:6;display:flex;gap:24px;padding:12px var(--r) 11px var(--l);padding-top:calc(12px + env(safe-area-inset-top,0px));background:var(--black);border-bottom:1px solid var(--line);font:400 19px/1.2 var(--display)}
+.filter button{color:var(--grey);padding:3px 0;border-bottom:2px solid transparent}
+.filter button:hover{color:var(--white)}
+.filter [aria-pressed="true"]{color:var(--white);border-bottom-color:var(--white)}
 
-@media(min-width:720px){
-  .cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:38px 22px;padding:0 var(--r) 0 var(--l)}
-  .meta{padding:0}
-  .specs{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
-@media(min-width:1080px){
-  :root{--l:32px;--r:32px}
-  .intro .in{padding-block:26px 44px}
-  .group{display:grid;grid-template-columns:230px minmax(0,1fr);gap:0 10px;padding:42px var(--r) 0 var(--l)}
-  .group h2{align-self:start;top:22px;padding:8px 14px 0 0;background:none;border:0;border-top:2px solid var(--ink);margin:0}
-  .group>.cards,.group>.body{min-width:0}
-  .cards{padding:0}
-  .more{padding:0}
-  .about{grid-template-columns:230px minmax(0,1fr) minmax(0,1fr);gap:10px 26px}
-  .dock{left:50%;right:auto;bottom:18px;width:560px;transform:translateX(-50%);box-shadow:0 0 0 2px var(--ink)}
-  body{padding-bottom:0}
-  .contact .in{padding-bottom:96px}
+.feed{display:grid;gap:52px;padding-top:30px}
+.all .dup{display:none}
+.item{display:grid;gap:14px;min-width:0}
+.cap{display:grid;gap:5px;padding:0 var(--r) 0 var(--l);min-width:0}
+.cap h2{margin:0;font:300 clamp(35px,10vw,68px)/1.04 var(--display);text-wrap:balance;overflow-wrap:break-word}
+.cap p{margin:0;color:var(--grey);font-size:15px;line-height:1.35}
+.alt{justify-self:start;padding:4px 0;font-size:15px;font-weight:500;text-decoration:underline;text-underline-offset:3px}
+
+.also{list-style:none;margin:60px 0 0;padding:0 var(--r) 0 var(--l)}
+.also li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 14px;padding:13px 0;border-top:1px solid var(--line)}
+.also b{font:400 22px/1.2 var(--display)}.also b a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+.also span{grid-column:1/-1;grid-row:2;color:var(--grey);font-size:15px}
+.also em{font-style:normal;color:var(--grey);font-size:14px}
+
+.about{margin-top:64px;background:var(--paper);color:var(--black)}
+.about .in,.contact .in{max-width:1400px;margin:0 auto;padding:40px var(--r) 44px var(--l);display:grid;gap:28px}
+.about h2,.contact h2{margin:0;font:400 19px/1.2 var(--display)}
+.about p{margin:0;max-width:17em;font:300 clamp(31px,8.6vw,58px)/1.08 var(--display);text-wrap:balance}
+.specs{display:grid;gap:15px;margin:0}
+.specs dt{font:500 17px/1.25 var(--display);color:var(--red)}
+.specs dd{margin:0}
+.contact{background:var(--red)}
+.contact .in{gap:16px;justify-items:start;padding-bottom:calc(46px + env(safe-area-inset-bottom,0px))}
+.mail{font:300 clamp(27px,8vw,76px)/1.1 var(--display);overflow-wrap:anywhere;user-select:all}
+.copy{min-height:46px;padding:0 20px;background:var(--white);color:var(--black);font:500 17px var(--display)}
+
+dialog{width:100vw;max-width:none;height:100dvh;max-height:none;margin:0;padding:0;border:0;background:var(--black);color:var(--white)}
+dialog::backdrop{background:var(--black)}
+.film{display:grid;grid-template-rows:auto minmax(0,1fr);height:100%}
+.fh{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:calc(10px + env(safe-area-inset-top,0px)) var(--r) 10px var(--l)}
+.fh b{font:400 20px/1.2 var(--display);overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.close{flex:none;min-height:40px;padding:0 15px;background:var(--white);color:var(--black);font:500 16px var(--display)}
+.screen{display:grid;place-items:center;min-height:0;container-type:size}
+.screen iframe{width:min(100cqw,177.78cqh);aspect-ratio:16/9;border:0;display:block}
+
+@media(min-width:900px){
+  :root{--l:28px;--r:28px}
+  h1{font-size:18px}
+  .frame{aspect-ratio:16/9}
+  .hero .frame{aspect-ratio:auto}
+  .feed{gap:84px;padding-top:56px}
+  .item{grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:24px;padding:0 var(--r) 0 var(--l);align-items:start}
+  .cap{padding:0;position:sticky;top:76px}
+  .cap h2{font-size:clamp(38px,3.7vw,60px)}
+  .also{max-width:calc(100% - 56px);margin-inline:28px;padding:0}
+  .about .in{grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:24px}
+  .about p{grid-column:2}
+  .specs{grid-column:2;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 24px}
 }
 </style>
 </head>
 <body>
-<header class="intro"><div class="in">
+<header class="bar">
   <h1>Māris Mīlgrāvis</h1>
-  <p class="lead">Title sequences, stage visuals and commercials.</p>
-  <p class="sub">Visual and motion designer with 20 years in television, live events and advertising. Based in Jūrmala, Latvia.</p>
-</div></header>
+  <nav aria-label="Page"><a href="#about">About</a><a href="#contact">Contact</a></nav>
+</header>
 
-<main id="work" class="show-all"><section class="group" id="g-start" data-group="start"><h2>Start here</h2><div class="cards"><article class="card" data-k="t"><a class="poster" href="https://www.youtube.com/watch?v=T9bWuK5CzYk" data-v="T9bWuK5CzYk" data-t="Zelta Mikrofons 2025" target="_blank" rel="noopener" aria-label="Play Zelta Mikrofons 2025, 0:30"><img src="posters/T9bWuK5CzYk.jpg" alt="" width="960" height="540" loading="lazy" decoding="async"><span class="badge"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>0:30</span></a><div class="meta"><h3>Zelta Mikrofons 2025</h3><span class="year">2025</span><p>Title sequence for the music awards</p></div></article><article class="card" data-k="s"><a class="poster" href="https://www.youtube.com/watch?v=l5ozsQKma4Y" data-v="l5ozsQKma4Y" data-t="Riga Tesseract" target="_blank" rel="noopener" aria-label="Play Riga Tesseract, 7:28"><img src="posters/l5ozsQKma4Y.jpg" alt="" width="960" height="540" loading="lazy" decoding="async"><span class="badge"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>7:28</span></a><div class="meta"><h3>Riga Tesseract</h3><span class="year">2019</span><p>Co-author and project manager, Staro Rīga light festival</p><a class="alt" href="https://www.facebook.com/reel/798827920534477" target="_blank" rel="noopener">Reel on Facebook</a></div></article><article class="card" data-k="s"><a class="poster" href="https://www.youtube.com/watch?v=Wk8RXzZgG_w" data-v="Wk8RXzZgG_w" data-t="Ryga: Candyman" target="_blank" rel="noopener" aria-label="Play Ryga: Candyman, 4:10"><img src="posters/Wk8RXzZgG_w.jpg" alt="" width="960" height="540" loading="lazy" decoding="async"><span class="badge"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>4:10</span></a><div class="meta"><h3>Ryga: Candyman</h3><span class="year">2015</span><p>Stage visuals, Zelta Mikrofons</p></div></article><article class="card" data-k="a"><a class="poster" href="https://www.youtube.com/watch?v=ZbuHCgc5MGY" data-v="ZbuHCgc5MGY" data-t="Cilmes šūnu banka" target="_blank" rel="noopener" aria-label="Play Cilmes šūnu banka, 1:23"><img src="posters/ZbuHCgc5MGY.jpg" alt="" width="960" height="540" loading="lazy" decoding="async"><span class="badge"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>1:23</span></a><div class="meta"><h3>Cilmes šūnu banka</h3><span class="year">2025</span><p>Animated video ad for a stem cell bank</p></div></article></div></section><section class="group" id="g-s" data-group="s"><h2>Stage and live</h2><div class="body"><div class="cards"><article class="card" data-k="s"><a class="poster" href="https://www.youtube.com/watch?v=g42fTRhyA5s" data-v="g42fTRhyA5s" data-t="Ansis un Ozols: Kas deg manā bākā" target="_blank" rel="noopener" aria-label="Play Ansis un Ozols: Kas deg manā bākā, 3:46"><img src="posters/g42fTRhyA5s.jpg" alt="" width="960" height="540" loading="lazy" decoding="async"><span class="badge"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>3:46</span></a><div class="meta"><h3>Ansis un Ozols: Kas deg manā bākā</h3><span class="year">2018</span><p>Stage visuals, Zelta Mikrofons</p></div></article><article class="card" data-k="s"><a class="poster" href="https://www.youtube.com/watch?v=eQGiTwRj0uM" data-v="eQGiTwRj0uM" data-t="Pienvedēja piedzīvojumi: Cilvēks ar trepēm" target="_blank" rel="noopener" aria-label="Play Pienvedēja piedzīvojumi: Cilvēks ar trepēm, 2:16"><img src="posters/eQGiTwRj0uM.jpg" alt="" width="960" height="540" loading="lazy" decoding="async"><span class="badge"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>2:16</span></a><div class="meta"><h3>Pienvedēja piedzīvojumi: Cilvēks ar trepēm</h3><span class="year">2017</span><p>Stage visuals, Zelta Mikrofons</p></div></article><article class="card dup" data-k="s"><a class="poster" href="https://www.youtube.com/watch?v=Wk8RXzZgG_w" data-v="Wk8RXzZgG_w" data-t="Ryga: Candyman" target="_blank" rel="noopener" aria-label="Play Ryga: Candyman, 4:10"><img src="posters/Wk8RXzZgG_w.jpg" alt="" width="960" height="540" loading="lazy" decoding="async"><span class="badge"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>4:10</span></a><div class="meta"><h3>Ryga: Candyman</h3><span class="year">2015</span><p>Stage visuals, Zelta Mikrofons</p></div></article><article class="card dup" data-k="s"><a class="poster" href="https://www.youtube.com/watch?v=l5ozsQKma4Y" data-v="l5ozsQKma4Y" data-t="Riga Tesseract" target="_blank" rel="noopener" aria-label="Play Riga Tesseract, 7:28"><img src="posters/l5ozsQKma4Y.jpg" alt="" width="960" height="540" loading="lazy" decoding="async"><span class="badge"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>7:28</span></a><div class="meta"><h3>Riga Tesseract</h3><span class="year">2019</span><p>Co-author and project manager, Staro Rīga light festival</p><a class="alt" href="https://www.facebook.com/reel/798827920534477" target="_blank" rel="noopener">Reel on Facebook</a></div></article><article class="card" data-k="s"><a class="poster" href="https://www.youtube.com/watch?v=-ZYazO41XLU" data-v="-ZYazO41XLU" data-t="Laima Rendezvous Jūrmala 2025" target="_blank" rel="noopener" aria-label="Play Laima Rendezvous Jūrmala 2025, 0:36"><img src="posters/-ZYazO41XLU.jpg" alt="" width="960" height="540" loading="lazy" decoding="async"><span class="badge"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>0:36</span></a><div class="meta"><h3>Laima Rendezvous Jūrmala 2025</h3><span class="year">2025</span><p>Video services for the festival</p></div></article><article class="card" data-k="s"><a class="poster" href="https://www.youtube.com/watch?v=HgdZ84K86q0" data-v="HgdZ84K86q0" data-t="Laima Rendezvous Jūrmala 2024" target="_blank" rel="noopener" aria-label="Play Laima Rendezvous Jūrmala 2024, 0:27"><img src="posters/HgdZ84K86q0.jpg" alt="" width="960" height="540" loading="lazy" decoding="async"><span class="badge"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>0:27</span></a><div class="meta"><h3>Laima Rendezvous Jūrmala 2024</h3><span class="year">2024</span><p>Video services for the festival</p></div></article><article class="card" data-k="s"><a class="poster" href="https://www.youtube.com/watch?v=el1Uv7vA9sU" data-v="el1Uv7vA9sU" data-t="Laima Rendezvous Jūrmala 2023" target="_blank" rel="noopener" aria-label="Play Laima Rendezvous Jūrmala 2023, 0:30"><img src="posters/el1Uv7vA9sU.jpg" alt="" width="960" height="540" loading="lazy" decoding="async"><span class="badge"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>0:30</span></a><div class="meta"><h3>Laima Rendezvous Jūrmala 2023</h3><span class="year">2023</span><p>Video services for the festival</p></div></article><article class="card" data-k="s"><a class="poster" href="https://www.youtube.com/watch?v=ihIb8jXx5Xo" data-v="ihIb8jXx5Xo" data-t="Latgola.lv 2" target="_blank" rel="noopener" aria-label="Play Latgola.lv 2, 2:43:45"><img src="posters/ihIb8jXx5Xo.jpg" alt="" width="960" height="540" loading="lazy" decoding="async"><span class="badge"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>2:43:45</span></a><div class="meta"><h3>Latgola.lv 2</h3><span class="year">2014</span><p>Video design, Latvian National Theatre</p></div></article></div><ul class="more"><li><b>Labvakar, Rīga! Labvakar, Latvija!</b><span>Video projections, 11 November Embankment</span><em>2018</em></li><li><b>X Factor Latvia</b><span>Video projection design for the TV show</span><em></em></li></ul></div></section><section class="group" id="g-t" data-group="t"><h2>Television</h2><div class="body"><div class="cards"><article class="card dup" data-k="t"><a class="poster" href="https://www.youtube.com/watch?v=T9bWuK5CzYk" data-v="T9bWuK5CzYk" data-t="Zelta Mikrofons 2025" target="_blank" rel="noopener" aria-label="Play Zelta Mikrofons 2025, 0:30"><img src="posters/T9bWuK5CzYk.jpg" alt="" width="960" height="540" loading="lazy" decoding="async"><span class="badge"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>0:30</span></a><div class="meta"><h3>Zelta Mikrofons 2025</h3><span class="year">2025</span><p>Title sequence for the music awards</p></div></article><article class="card" data-k="t"><a class="poster" href="https://www.youtube.com/watch?v=PfJA4nSMTzY" data-v="PfJA4nSMTzY" data-t="Olympic Games" target="_blank" rel="noopener" aria-label="Play Olympic Games, 0:07"><img src="posters/PfJA4nSMTzY.jpg" alt="" width="960" height="540" loading="lazy" decoding="async"><span class="badge"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>0:07</span></a><div class="meta"><h3>Olympic Games</h3><span class="year">2022</span><p>Broadcast title sequence, Latvian Television</p></div></article><article class="card" data-k="t"><a class="poster" href="https://www.youtube.com/watch?v=WUbDXrP-pHY" data-v="WUbDXrP-pHY" data-t="Election Night" target="_blank" rel="noopener" aria-label="Play Election Night, 5:09:45"><img src="posters/WUbDXrP-pHY.jpg" alt="" width="960" height="540" loading="lazy" decoding="async"><span class="badge"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>5:09:45</span></a><div class="meta"><h3>Election Night</h3><span class="year">2022</span><p>Broadcast video graphics, Latvian Television</p></div></article><article class="card" data-k="t"><a class="poster" href="https://www.youtube.com/watch?v=b85kvrauR98" data-v="b85kvrauR98" data-t="Panorāma: gas market" target="_blank" rel="noopener" aria-label="Play Panorāma: gas market, 6:39"><img src="posters/b85kvrauR98.jpg" alt="" width="960" height="540" loading="lazy" decoding="async"><span class="badge"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>6:39</span></a><div class="meta"><h3>Panorāma: gas market</h3><span class="year">2023</span><p>News infographics, Latvian Television</p></div></article><article class="card" data-k="t"><a class="poster" href="https://www.youtube.com/watch?v=bl416xiHgk4" data-v="bl416xiHgk4" data-t="De Facto: Envestio" target="_blank" rel="noopener" aria-label="Play De Facto: Envestio, 7:31"><img src="posters/bl416xiHgk4.jpg" alt="" width="960" height="540" loading="lazy" decoding="async"><span class="badge"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>7:31</span></a><div class="meta"><h3>De Facto: Envestio</h3><span class="year">2022</span><p>Animation for an investigative story</p></div></article><article class="card" data-k="t"><a class="poster" href="https://www.youtube.com/watch?v=kA1XcQyRHvU" data-v="kA1XcQyRHvU" data-t="De Facto: snow crabs" target="_blank" rel="noopener" aria-label="Play De Facto: snow crabs, 6:54"><img src="posters/kA1XcQyRHvU.jpg" alt="" width="960" height="540" loading="lazy" decoding="async"><span class="badge"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>6:54</span></a><div class="meta"><h3>De Facto: snow crabs</h3><span class="year">2022</span><p>Animation for an investigative story</p></div></article></div><ul class="more"><li><b><a href="https://replay.lsm.lv/lv/skaties/ieraksts/ltv/296657/dziesmas-cels-manai-dzimtenei" target="_blank" rel="noopener">Dziesmas ceļš. Manai dzimtenei</a></b><span>Title sequence, Latvian Television</span><em>2023</em></li></ul></div></section><section class="group" id="g-a" data-group="a"><h2>Advertising and animation</h2><div class="body"><div class="cards"><article class="card" data-k="a"><a class="poster" href="https://www.youtube.com/watch?v=L-keeAzyuoE" data-v="L-keeAzyuoE" data-t="Zolt LV" target="_blank" rel="noopener" aria-label="Play Zolt LV, 0:30"><img src="posters/L-keeAzyuoE.jpg" alt="" width="960" height="540" loading="lazy" decoding="async"><span class="badge"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>0:30</span></a><div class="meta"><h3>Zolt LV</h3><p>Animated commercial</p></div></article><article class="card dup" data-k="a"><a class="poster" href="https://www.youtube.com/watch?v=ZbuHCgc5MGY" data-v="ZbuHCgc5MGY" data-t="Cilmes šūnu banka" target="_blank" rel="noopener" aria-label="Play Cilmes šūnu banka, 1:23"><img src="posters/ZbuHCgc5MGY.jpg" alt="" width="960" height="540" loading="lazy" decoding="async"><span class="badge"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>1:23</span></a><div class="meta"><h3>Cilmes šūnu banka</h3><span class="year">2025</span><p>Animated video ad for a stem cell bank</p></div></article><article class="card" data-k="a"><a class="poster" href="https://www.youtube.com/watch?v=reOU-ONkq1g" data-v="reOU-ONkq1g" data-t="Riga Plaza" target="_blank" rel="noopener" aria-label="Play Riga Plaza, 0:00"><img src="posters/reOU-ONkq1g.jpg" alt="" width="960" height="540" loading="lazy" decoding="async"><span class="badge"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>0:00</span></a><div class="meta"><h3>Riga Plaza</h3><p>Shopping as an Experience, video for the shopping centre</p></div></article><article class="card" data-k="a"><a class="poster" href="https://www.youtube.com/watch?v=lJAHEzfB6aQ" data-v="lJAHEzfB6aQ" data-t="GUESS" target="_blank" rel="noopener" aria-label="Play GUESS, 1:42"><img src="posters/lJAHEzfB6aQ.jpg" alt="" width="960" height="540" loading="lazy" decoding="async"><span class="badge"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>1:42</span></a><div class="meta"><h3>GUESS</h3><span class="year">2017</span><p>Video for the fashion brand</p></div></article><article class="card" data-k="a"><a class="poster" href="https://www.youtube.com/watch?v=-KNo1B7K-YY" data-v="-KNo1B7K-YY" data-t="MikroTik SXT" target="_blank" rel="noopener" aria-label="Play MikroTik SXT, 2:38"><img src="posters/-KNo1B7K-YY.jpg" alt="" width="960" height="540" loading="lazy" decoding="async"><span class="badge"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>2:38</span></a><div class="meta"><h3>MikroTik SXT</h3><span class="year">2012</span><p>Product installation guide</p></div></article><article class="card" data-k="a"><a class="poster" href="https://www.youtube.com/watch?v=NQYkkKi5FVI" data-v="NQYkkKi5FVI" data-t="Energy literacy" target="_blank" rel="noopener" aria-label="Play Energy literacy, 9:07"><img src="posters/NQYkkKi5FVI.jpg" alt="" width="960" height="540" loading="lazy" decoding="async"><span class="badge"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>9:07</span></a><div class="meta"><h3>Energy literacy</h3><span class="year">2022</span><p>Animation, Riga Environmental Protection Fund</p></div></article><article class="card" data-k="a"><a class="poster" href="https://www.youtube.com/watch?v=EL7fGSpwYI4" data-v="EL7fGSpwYI4" data-t="Adult education series" target="_blank" rel="noopener" aria-label="Play Adult education series, 1:52"><img src="posters/EL7fGSpwYI4.jpg" alt="" width="960" height="540" loading="lazy" decoding="async"><span class="badge"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>1:52</span></a><div class="meta"><h3>Adult education series</h3><span class="year">2022</span><p>Animated videos, Ministry of Education and Science</p></div></article><article class="card" data-k="a"><a class="poster" href="https://www.youtube.com/watch?v=-5NASUHqy5A" data-v="-5NASUHqy5A" data-t="Energy PROSPECTS" target="_blank" rel="noopener" aria-label="Play Energy PROSPECTS, 3:03"><img src="posters/-5NASUHqy5A.jpg" alt="" width="960" height="540" loading="lazy" decoding="async"><span class="badge"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>3:03</span></a><div class="meta"><h3>Energy PROSPECTS</h3><span class="year">2023</span><p>Video graphics for an EU project</p></div></article></div></div></section></main>
+<section class="hero" id="top">
+  <a class="frame" id="heroFrame" href="https://www.youtube.com/watch?v=T9bWuK5CzYk" target="_blank" rel="noopener" data-v="T9bWuK5CzYk" data-s="0" data-t="Zelta Mikrofons 2025" aria-label="Play Zelta Mikrofons 2025 title sequence with sound, 0:30">
+    <img src="posters/T9bWuK5CzYk.jpg" alt="" width="960" height="540" fetchpriority="high">
+  </a>
+  <div class="say">
+    <p>Title sequences, stage visuals and commercials.</p>
+    <button class="play" type="button" id="heroPlay"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>0:30</button>
+  </div>
+</section>
 
-<section class="about" id="about">
+<nav class="filter" aria-label="Filter work" id="filter">
+  <button type="button" data-f="all" aria-pressed="true">All</button>
+  <button type="button" data-f="s" aria-pressed="false">Stage</button>
+  <button type="button" data-f="t" aria-pressed="false">TV</button>
+  <button type="button" data-f="a" aria-pressed="false">Ads</button>
+</nav>
+
+<main class="feed all" id="feed"><article class="item dup" data-k="t"><div class="cap"><h2>Zelta Mikrofons 2025</h2><p>Title sequence for the music awards, 2025</p></div><a class="frame" href="https://www.youtube.com/watch?v=T9bWuK5CzYk" target="_blank" rel="noopener" data-v="T9bWuK5CzYk" data-s="0" data-t="Zelta Mikrofons 2025" aria-label="Play Zelta Mikrofons 2025 with sound, 0:30"><img src="posters/T9bWuK5CzYk.jpg" alt="" width="960" height="540" loading="lazy" decoding="async" style="object-position:50% 50%"><span class="go"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>0:30</span></a></article><article class="item" data-k="s"><div class="cap"><h2>Riga Tesseract</h2><p>Co-author and project manager, Staro Rīga light festival, 2019</p><a class="alt" href="https://www.facebook.com/reel/798827920534477" target="_blank" rel="noopener">Reel on Facebook</a></div><a class="frame" href="https://www.youtube.com/watch?v=l5ozsQKma4Y" target="_blank" rel="noopener" data-v="l5ozsQKma4Y" data-s="0" data-t="Riga Tesseract" aria-label="Play Riga Tesseract with sound, 7:28"><img src="posters/l5ozsQKma4Y.jpg" alt="" width="960" height="540" loading="lazy" decoding="async" style="object-position:55% 50%"><span class="go"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>7:28</span></a></article><article class="item" data-k="s"><div class="cap"><h2>Ryga: Candyman</h2><p>Stage visuals, Zelta Mikrofons, 2015</p></div><a class="frame" href="https://www.youtube.com/watch?v=Wk8RXzZgG_w" target="_blank" rel="noopener" data-v="Wk8RXzZgG_w" data-s="0" data-t="Ryga: Candyman" aria-label="Play Ryga: Candyman with sound, 4:10"><img src="posters/Wk8RXzZgG_w.jpg" alt="" width="960" height="540" loading="lazy" decoding="async" style="object-position:45% 50%"><span class="go"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>4:10</span></a></article><article class="item" data-k="a"><div class="cap"><h2>Cilmes šūnu banka</h2><p>Animated video ad, 2025</p></div><a class="frame" href="https://www.youtube.com/watch?v=ZbuHCgc5MGY" target="_blank" rel="noopener" data-v="ZbuHCgc5MGY" data-s="0" data-t="Cilmes šūnu banka" aria-label="Play Cilmes šūnu banka with sound, 1:23"><img src="posters/ZbuHCgc5MGY.jpg" alt="" width="960" height="540" loading="lazy" decoding="async" style="object-position:50% 50%"><span class="go"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>1:23</span></a></article><article class="item" data-k="t"><div class="cap"><h2>Olympic Games</h2><p>Broadcast title sequence, Latvian Television, 2022</p></div><a class="frame" href="https://www.youtube.com/watch?v=PfJA4nSMTzY" target="_blank" rel="noopener" data-v="PfJA4nSMTzY" data-s="0" data-t="Olympic Games" aria-label="Play Olympic Games with sound, 0:07"><img src="posters/PfJA4nSMTzY.jpg" alt="" width="960" height="540" loading="lazy" decoding="async" style="object-position:50% 50%"><span class="go"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>0:07</span></a></article><article class="item" data-k="s"><div class="cap"><h2>Laima Rendezvous Jūrmala 2024</h2><p>Editing, full festival day, 2024</p></div><a class="frame" href="https://www.youtube.com/watch?v=AAfbAimGP78" target="_blank" rel="noopener" data-v="AAfbAimGP78" data-s="3929" data-t="Laima Rendezvous Jūrmala 2024" aria-label="Play Laima Rendezvous Jūrmala 2024 with sound, 3:07:07"><img src="posters/AAfbAimGP78.jpg" alt="" width="960" height="540" loading="lazy" decoding="async" style="object-position:50% 50%"><span class="go"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>3:07:07</span></a></article><article class="item" data-k="a"><div class="cap"><h2>Zolt LV</h2><p>Animated commercial</p></div><a class="frame" href="https://www.youtube.com/watch?v=L-keeAzyuoE" target="_blank" rel="noopener" data-v="L-keeAzyuoE" data-s="0" data-t="Zolt LV" aria-label="Play Zolt LV with sound, 0:30"><img src="posters/L-keeAzyuoE.jpg" alt="" width="960" height="540" loading="lazy" decoding="async" style="object-position:30% 50%"><span class="go"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>0:30</span></a></article><article class="item" data-k="s"><div class="cap"><h2>Ansis un Ozols: Kas deg manā bākā</h2><p>Stage visuals, Zelta Mikrofons, 2018</p></div><a class="frame" href="https://www.youtube.com/watch?v=g42fTRhyA5s" target="_blank" rel="noopener" data-v="g42fTRhyA5s" data-s="0" data-t="Ansis un Ozols: Kas deg manā bākā" aria-label="Play Ansis un Ozols: Kas deg manā bākā with sound, 3:46"><img src="posters/g42fTRhyA5s.jpg" alt="" width="960" height="540" loading="lazy" decoding="async" style="object-position:50% 50%"><span class="go"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>3:46</span></a></article><article class="item" data-k="t"><div class="cap"><h2>Election Night</h2><p>Broadcast video graphics, Latvian Television, 2022</p></div><a class="frame" href="https://www.youtube.com/watch?v=WUbDXrP-pHY" target="_blank" rel="noopener" data-v="WUbDXrP-pHY" data-s="6504" data-t="Election Night" aria-label="Play Election Night with sound, 5:09:45"><img src="posters/WUbDXrP-pHY.jpg" alt="" width="960" height="540" loading="lazy" decoding="async" style="object-position:25% 50%"><span class="go"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>5:09:45</span></a></article><article class="item" data-k="a"><div class="cap"><h2>GUESS</h2><p>Filming to final edit, 2017</p></div><a class="frame" href="https://www.youtube.com/watch?v=lJAHEzfB6aQ" target="_blank" rel="noopener" data-v="lJAHEzfB6aQ" data-s="0" data-t="GUESS" aria-label="Play GUESS with sound, 1:42"><img src="posters/lJAHEzfB6aQ.jpg" alt="" width="960" height="540" loading="lazy" decoding="async" style="object-position:50% 50%"><span class="go"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>1:42</span></a></article><article class="item" data-k="s"><div class="cap"><h2>Pienvedēja piedzīvojumi: Cilvēks ar trepēm</h2><p>Stage visuals, Zelta Mikrofons, 2017</p></div><a class="frame" href="https://www.youtube.com/watch?v=eQGiTwRj0uM" target="_blank" rel="noopener" data-v="eQGiTwRj0uM" data-s="0" data-t="Pienvedēja piedzīvojumi: Cilvēks ar trepēm" aria-label="Play Pienvedēja piedzīvojumi: Cilvēks ar trepēm with sound, 2:16"><img src="posters/eQGiTwRj0uM.jpg" alt="" width="960" height="540" loading="lazy" decoding="async" style="object-position:50% 50%"><span class="go"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>2:16</span></a></article><article class="item" data-k="a"><div class="cap"><h2>Riga Plaza</h2><p>Shopping as an Experience</p></div><a class="frame" href="https://www.youtube.com/watch?v=reOU-ONkq1g" target="_blank" rel="noopener" data-v="reOU-ONkq1g" data-s="0" data-t="Riga Plaza" aria-label="Play Riga Plaza with sound, 0:00"><img src="posters/reOU-ONkq1g.jpg" alt="" width="960" height="540" loading="lazy" decoding="async" style="object-position:50% 50%"><span class="go"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>0:00</span></a></article><article class="item" data-k="t"><div class="cap"><h2>De Facto: Envestio</h2><p>Animation for an investigative story, 2022</p></div><a class="frame" href="https://www.youtube.com/watch?v=bl416xiHgk4" target="_blank" rel="noopener" data-v="bl416xiHgk4" data-s="0" data-t="De Facto: Envestio" aria-label="Play De Facto: Envestio with sound, 7:31"><img src="posters/bl416xiHgk4.jpg" alt="" width="960" height="540" loading="lazy" decoding="async" style="object-position:45% 50%"><span class="go"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>7:31</span></a></article><article class="item" data-k="s"><div class="cap"><h2>Latgola.lv 2</h2><p>Video design, Latvian National Theatre, 2014</p></div><a class="frame" href="https://www.youtube.com/watch?v=ihIb8jXx5Xo" target="_blank" rel="noopener" data-v="ihIb8jXx5Xo" data-s="3438" data-t="Latgola.lv 2" aria-label="Play Latgola.lv 2 with sound, 2:43:45"><img src="posters/ihIb8jXx5Xo.jpg" alt="" width="960" height="540" loading="lazy" decoding="async" style="object-position:45% 50%"><span class="go"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>2:43:45</span></a></article><article class="item" data-k="a"><div class="cap"><h2>MikroTik</h2><p>Product video, 2012</p></div><a class="frame" href="https://www.youtube.com/watch?v=-KNo1B7K-YY" target="_blank" rel="noopener" data-v="-KNo1B7K-YY" data-s="0" data-t="MikroTik" aria-label="Play MikroTik with sound, 2:38"><img src="posters/-KNo1B7K-YY.jpg" alt="" width="960" height="540" loading="lazy" decoding="async" style="object-position:70% 50%"><span class="go"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>2:38</span></a></article><article class="item" data-k="t"><div class="cap"><h2>Panorāma: gas market</h2><p>News infographics, Latvian Television, 2023</p></div><a class="frame" href="https://www.youtube.com/watch?v=b85kvrauR98" target="_blank" rel="noopener" data-v="b85kvrauR98" data-s="0" data-t="Panorāma: gas market" aria-label="Play Panorāma: gas market with sound, 6:39"><img src="posters/b85kvrauR98.jpg" alt="" width="960" height="540" loading="lazy" decoding="async" style="object-position:35% 50%"><span class="go"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>6:39</span></a></article><article class="item" data-k="a"><div class="cap"><h2>Energy literacy</h2><p>Animation, Riga Environmental Protection Fund, 2022</p></div><a class="frame" href="https://www.youtube.com/watch?v=NQYkkKi5FVI" target="_blank" rel="noopener" data-v="NQYkkKi5FVI" data-s="0" data-t="Energy literacy" aria-label="Play Energy literacy with sound, 9:07"><img src="posters/NQYkkKi5FVI.jpg" alt="" width="960" height="540" loading="lazy" decoding="async" style="object-position:30% 50%"><span class="go"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>9:07</span></a></article><article class="item" data-k="t"><div class="cap"><h2>De Facto: snow crabs</h2><p>Animation for an investigative story, 2022</p></div><a class="frame" href="https://www.youtube.com/watch?v=kA1XcQyRHvU" target="_blank" rel="noopener" data-v="kA1XcQyRHvU" data-s="0" data-t="De Facto: snow crabs" aria-label="Play De Facto: snow crabs with sound, 6:54"><img src="posters/kA1XcQyRHvU.jpg" alt="" width="960" height="540" loading="lazy" decoding="async" style="object-position:75% 50%"><span class="go"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>6:54</span></a></article><article class="item" data-k="a"><div class="cap"><h2>Adult education series</h2><p>Animated videos, Ministry of Education and Science, 2022</p></div><a class="frame" href="https://www.youtube.com/watch?v=EL7fGSpwYI4" target="_blank" rel="noopener" data-v="EL7fGSpwYI4" data-s="0" data-t="Adult education series" aria-label="Play Adult education series with sound, 1:52"><img src="posters/EL7fGSpwYI4.jpg" alt="" width="960" height="540" loading="lazy" decoding="async" style="object-position:60% 50%"><span class="go"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>1:52</span></a></article><article class="item" data-k="a"><div class="cap"><h2>Energy PROSPECTS</h2><p>Video graphics for an EU project, 2023</p></div><a class="frame" href="https://www.youtube.com/watch?v=-5NASUHqy5A" target="_blank" rel="noopener" data-v="-5NASUHqy5A" data-s="0" data-t="Energy PROSPECTS" aria-label="Play Energy PROSPECTS with sound, 3:03"><img src="posters/-5NASUHqy5A.jpg" alt="" width="960" height="540" loading="lazy" decoding="async" style="object-position:50% 50%"><span class="go"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>3:03</span></a></article></main>
+<ul class="also" id="also"><li><b><a href="https://replay.lsm.lv/lv/skaties/ieraksts/ltv/296657/dziesmas-cels-manai-dzimtenei" target="_blank" rel="noopener">Dziesmas ceļš. Manai dzimtenei</a></b><span>Title sequence, Latvian Television</span><em>2023</em></li><li><b>Labvakar, Rīga! Labvakar, Latvija!</b><span>Video projections, 11 November Embankment</span><em>2018</em></li><li><b>X Factor Latvia</b><span>Video projection design for the TV show</span><em></em></li></ul>
+
+<section class="about" id="about"><div class="in">
   <h2>About</h2>
-  <p>I take work from concept to final delivery: design, animation, filming and editing.</p>
+  <p>20 years of design, animation, filming and editing for television, stage and advertising.</p>
   <dl class="specs">
     <div><dt>Motion and video</dt><dd>After Effects, Premiere Pro, Animate, Final Cut Pro</dd></div>
     <div><dt>Design</dt><dd>Figma, Illustrator, Photoshop, InDesign, CorelDRAW</dd></div>
@@ -108,7 +134,7 @@ main{max-width:1280px;margin:0 auto}
     <div><dt>Background</dt><dd>Founder of studio KOMŪNA7, Latvian Television 2021–2023</dd></div>
     <div><dt>Languages</dt><dd>Latvian, English (C1), Russian (B2)</dd></div>
   </dl>
-</section>
+</div></section>
 
 <footer class="contact" id="contact"><div class="in">
   <h2>Contact</h2>
@@ -116,64 +142,98 @@ main{max-width:1280px;margin:0 auto}
   <button class="copy" id="copy" type="button">Copy email</button>
 </div></footer>
 
-<nav class="dock" aria-label="Filter work">
-  <button type="button" data-f="all" aria-pressed="true">All</button>
-  <button type="button" data-f="s" aria-pressed="false">Stage</button>
-  <button type="button" data-f="t" aria-pressed="false">TV</button>
-  <button type="button" data-f="a" aria-pressed="false">Ads</button>
-  <a href="#contact">Contact</a>
-</nav>
+<dialog id="film" aria-label="Film player">
+  <div class="film">
+    <div class="fh"><b id="filmTitle"></b><button class="close" id="close" type="button">Close</button></div>
+    <div class="screen" id="screen"></div>
+  </div>
+</dialog>
 
 <script>
 (function(){
-  var main=document.getElementById("work"), active=null;
+  var frames=[].slice.call(document.querySelectorAll(".frame"));
+  var dlg=document.getElementById("film"), screen=document.getElementById("screen");
+  var conn=navigator.connection||{};
+  var moving=!matchMedia("(prefers-reduced-motion: reduce)").matches&&!conn.saveData;
+  var current=null, timer=0, cutTimer=0, ratios=new Map();
 
-  function stopFilm(){
-    if(!active) return;
-    var f=active.querySelector("iframe");
-    if(f) f.remove();
-    active.querySelector("img").hidden=false;
-    active.querySelector(".badge").hidden=false;
-    active=null;
+  function unmount(){
+    if(!current) return;
+    clearInterval(cutTimer);
+    var c=current.querySelector(".cut");
+    if(c) c.remove();
+    current.classList.remove("live");
+    current=null;
   }
-  function play(link){
-    stopFilm();
+  function mount(el){
+    if(el===current) return;
+    unmount();
+    current=el;
+    var base=el.querySelector("img"), ready=[base.currentSrc||base.src], n=0, cut=new Image();
+    cut.className="cut"; cut.alt=""; cut.style.objectPosition=base.style.objectPosition;
+    [1,2,3].forEach(function(i){
+      var p=new Image();
+      p.onload=function(){ready.push(p.src)};
+      p.src="frames/"+el.dataset.v+"-"+i+".jpg";
+    });
+    cutTimer=setInterval(function(){
+      if(document.hidden||ready.length<2) return;
+      n=(n+1)%ready.length; cut.src=ready[n];
+      if(!cut.isConnected){el.insertBefore(cut,base.nextSibling);el.classList.add("live")}
+    },1000);
+  }
+
+  function pick(){
+    if(!moving||dlg.open) return;
+    var best=null, top=.5;
+    ratios.forEach(function(r,el){if(r>top&&el.offsetParent){top=r;best=el}});
+    if(best) mount(best); else unmount();
+  }
+  if(moving&&"IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(list){
+      list.forEach(function(x){ratios.set(x.target,x.intersectionRatio)});
+      clearTimeout(timer); timer=setTimeout(pick,260);
+    },{threshold:[0,.25,.5,.65,.8,1]});
+    frames.forEach(function(el){io.observe(el)});
+  }
+
+  function openFilm(el){
+    unmount();
     var f=document.createElement("iframe");
-    f.src="https://www.youtube-nocookie.com/embed/"+link.dataset.v+"?autoplay=1&rel=0&playsinline=1";
-    f.title=link.dataset.t;
-    f.allow="autoplay; encrypted-media; picture-in-picture; fullscreen";
-    f.allowFullscreen=true;
-    link.querySelector("img").hidden=true;
-    link.querySelector(".badge").hidden=true;
-    link.appendChild(f);
-    active=link;
+    f.src="https://www.youtube-nocookie.com/embed/"+el.dataset.v+"?autoplay=1&rel=0&playsinline=1&start="+(el.dataset.s||0);
+    f.title=el.dataset.t; f.allow="autoplay; encrypted-media; picture-in-picture; fullscreen"; f.allowFullscreen=true;
+    screen.innerHTML=""; screen.appendChild(f);
+    document.getElementById("filmTitle").textContent=el.dataset.t;
+    dlg.showModal();
   }
-  document.querySelectorAll(".poster").forEach(function(a){
-    a.addEventListener("click",function(e){
+  dlg.addEventListener("close",function(){screen.innerHTML="";pick()});
+  document.getElementById("close").addEventListener("click",function(){dlg.close()});
+  frames.forEach(function(el){
+    el.addEventListener("click",function(e){
       if(e.metaKey||e.ctrlKey||e.shiftKey) return;
-      e.preventDefault();
-      if(active!==a) play(a);
+      e.preventDefault(); openFilm(el);
     });
   });
+  document.getElementById("heroPlay").addEventListener("click",function(){openFilm(document.getElementById("heroFrame"))});
 
-  function filter(key){
-    stopFilm();
-    document.querySelectorAll("[data-f]").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.f===key)});
-    main.classList.toggle("show-all",key==="all");
-    document.querySelectorAll("[data-group]").forEach(function(g){
-      g.hidden=key==="all"?false:g.dataset.group!==key;
-    });
-    main.scrollIntoView({block:"start"});
-  }
+  var feed=document.getElementById("feed"), filterBar=document.getElementById("filter"), also=document.getElementById("also");
   document.querySelectorAll("[data-f]").forEach(function(b){
-    b.addEventListener("click",function(){filter(b.dataset.f)});
+    b.addEventListener("click",function(){
+      var key=b.dataset.f;
+      document.querySelectorAll("[data-f]").forEach(function(x){x.setAttribute("aria-pressed",x===b)});
+      feed.classList.toggle("all",key==="all");
+      feed.querySelectorAll(".item").forEach(function(it){it.hidden=key!=="all"&&it.dataset.k!==key});
+      also.hidden=key!=="all";
+      scrollTo(0,filterBar.parentNode===document.body?document.getElementById("top").offsetHeight:0);
+      setTimeout(pick,320);
+    });
   });
 
   document.getElementById("copy").addEventListener("click",function(){
     var b=this, mail=document.getElementById("mail");
-    function pick(){getSelection().selectAllChildren(mail);b.textContent="Email selected"}
-    if(navigator.clipboard) navigator.clipboard.writeText(mail.textContent).then(function(){b.textContent="Email copied"},pick);
-    else pick();
+    function sel(){getSelection().selectAllChildren(mail);b.textContent="Email selected"}
+    if(navigator.clipboard) navigator.clipboard.writeText(mail.textContent).then(function(){b.textContent="Email copied"},sel);
+    else sel();
   });
 })();
 </script>
