@@ -5,353 +5,429 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Māris Mīlgrāvis</title>
 <meta name="description" content="Visual and motion designer. Advertising, television, stage and live visuals.">
-<meta name="theme-color" content="#0b0b0b">
+<meta name="theme-color" content="#000000">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500;600&family=Barlow:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;500;600&family=Barlow:wght@400;500&display=swap">
 <style>
-/* Concept: the portfolio is an edit suite. Program monitor, three tracks, one red playhead. */
-:root{--black:#0b0b0b;--panel:#161616;--clip:#2a2a2a;--line:#333;--mid:#8f8f8f;--soft:#bdbdbd;--white:#fff;--red:#7f0000;--signal:#e5332a;--display:"Dosis","DIN Alternate","Arial Narrow",sans-serif;--body:"Barlow","Segoe UI",Arial,sans-serif;--gutter:max(20px,env(safe-area-inset-left,0px));--gutter-r:max(20px,env(safe-area-inset-right,0px));color-scheme:dark}
+/* Concept: a compositing workspace where the keyframes on screen really drive the reel. */
+:root{--gap:#000;--panel:#262626;--well:#1b1b1b;--bar:#343434;--line:#3d3d3d;--text:#d2d2d2;--dim:#9b9b9b;--white:#fff;--red:#7f0000;--hot:#ff7468;--lw:270px;--ui:"Dosis","Arial Narrow",sans-serif;--num:"Barlow","Segoe UI",Arial,sans-serif;color-scheme:dark}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-html{scroll-behavior:smooth;background:var(--black)}
-body{margin:0;background:var(--black);color:var(--white);font:400 16px/1.5 var(--body);-webkit-font-smoothing:antialiased}
-button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
-a{color:inherit}
-:focus-visible{outline:2px solid var(--signal);outline-offset:2px}
+html,body{margin:0;background:var(--gap);color:var(--text)}
+body{font:500 14.5px/1.3 var(--ui);-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-align:left}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--hot);outline-offset:-2px}
 
-.app{display:grid;grid-template-columns:minmax(0,1fr);gap:0}
-.top{display:flex;align-items:center;justify-content:space-between;gap:16px 28px;padding:16px var(--gutter-r) 14px var(--gutter)}
-.mark{display:inline-grid;gap:5px;text-decoration:none;font:400 19px/1.25 var(--display);letter-spacing:.14em;text-transform:uppercase;margin:0}
-.mark::before{content:"";height:2px;background:currentColor;border-radius:9px}
-.mark a{text-decoration:none}
-.top nav{display:flex;gap:22px;font:500 14px var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
-.top nav a{text-decoration:none}.top nav a:hover{color:var(--white)}
+.ws{display:grid;gap:2px;padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px);grid-template-columns:minmax(0,1fr)}
+.menu{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 12px;height:34px;background:var(--bar)}
+.menu h1{margin:0;font:500 16px/1 var(--ui);letter-spacing:.05em;color:var(--white)}
+.menu p{margin:0;color:var(--dim);white-space:nowrap}
+.panel{display:flex;flex-direction:column;min-width:0;min-height:0;background:var(--panel);overflow:hidden}
+.ph{flex:none;display:flex;align-items:stretch;height:28px;background:var(--bar);overflow:hidden}
+.ph>span,.ph>button{display:flex;align-items:center;padding:0 12px;white-space:nowrap;color:var(--dim)}
+.ph>.on,.ph>span{background:var(--panel);color:var(--white)}
+.ph>button:hover{color:var(--white)}
 
-.stage{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;padding:0 var(--gutter-r) 16px var(--gutter);min-height:0}
-.mwrap{min-width:0;min-height:0}
-.monitor{position:relative;width:100%;aspect-ratio:16/9;background:#000;overflow:hidden}
-.monitor img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .28s linear;transform:scale(1.001)}
-.monitor img.on{opacity:1;animation:push 6s linear forwards}
-@keyframes push{to{transform:scale(1.05)}}
-.slate{position:absolute;inset:0;display:grid;align-content:end;gap:6px;padding:clamp(18px,4%,44px);background:var(--red);opacity:0;transition:opacity .2s linear;pointer-events:none}
-.slate.on{opacity:1}
-.slate b{display:inline-grid;justify-self:start;max-width:100%;font:300 clamp(26px,5.2vw,68px)/1.2 var(--display);letter-spacing:.05em;text-transform:uppercase}
-.slate b::before{content:"";height:max(2px,.05em);background:currentColor;border-radius:9px;margin-bottom:.22em}
-.slate span{font:400 clamp(14px,1.6vw,19px)/1.3 var(--display);letter-spacing:.05em;color:#f3dcdc}
-.hud{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;gap:12px;padding:10px 12px;font:500 13px var(--body);font-variant-numeric:tabular-nums;letter-spacing:.06em;pointer-events:none;text-shadow:0 1px 3px #000c}
-.hud i{font-style:normal;display:inline-flex;align-items:center;gap:6px}
-.hud i::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--signal)}
-.hud.paused i::before{background:var(--mid)}
-.hit{position:absolute;inset:0;display:block;width:100%;height:100%}
-.hit span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);padding:9px 20px;background:var(--white);color:var(--black);font:600 15px var(--display);letter-spacing:.14em;text-transform:uppercase;opacity:0;transition:opacity .15s}
+.tree{flex:1;overflow:auto;padding:5px 0;scrollbar-width:thin}
+.dir summary{display:flex;align-items:center;gap:7px;padding:4px 10px;cursor:pointer;color:var(--white);list-style:none}
+.dir summary::-webkit-details-marker{display:none}
+.dir summary::before{content:"";border:4px solid transparent;border-left:6px solid var(--dim);margin-right:-3px;transform-origin:3px 4px}
+.dir[open] summary::before{transform:rotate(90deg)}
+.dir em{font:400 12px var(--num);color:var(--dim);margin-left:auto}
+.dir ul{list-style:none;margin:0 0 5px;padding:0}
+.it{display:flex;align-items:center;gap:8px;width:100%;padding:3px 10px 3px 26px;color:var(--text)}
+.it::before{content:"";flex:none;width:9px;height:9px;background:var(--c)}
+.it:hover{background:var(--bar);color:var(--white)}
+.it.on{background:var(--red);color:var(--white)}
+.it.on::before{background:var(--white)}
+.k-s{--c:#b01818}.k-t{--c:#8f8f8f}.k-a{--c:#e4e4e4}
+
+.view{flex:1;min-height:0;background:var(--well);padding:10px;container-type:size;display:grid;place-items:center}
+.canvas{position:relative;width:min(100cqw,calc(100cqh * 16 / 9));aspect-ratio:16/9;max-width:100%;background:#000;overflow:hidden;box-shadow:0 0 0 1px #555}
+.lyr{position:absolute;inset:0;visibility:hidden;will-change:transform,opacity}
+.lyr img{width:100%;height:100%;object-fit:cover;display:block}
+.lyr.card{display:grid;align-content:end;gap:.35em;padding:5%;background:var(--red);color:var(--white)}
+.lyr.card b,.sheet h2{display:inline-grid;justify-self:start;max-width:100%;font:400 clamp(24px,4.3cqw,60px)/1.16 var(--ui);letter-spacing:.03em;margin:0}
+.lyr.card b::before,.sheet h2::before{content:"";height:max(2px,.05em);background:currentColor;border-radius:9px;margin-bottom:.25em}
+.lyr.card span{font-size:clamp(14px,1.6cqw,21px)}
+.hit{position:absolute;inset:0;display:grid;place-items:center;width:100%}
+.hit span{padding:8px 18px;background:var(--white);color:#000;font:600 16px var(--ui);opacity:0}
 .hit:hover span,.hit:focus-visible span{opacity:1}
-.hit[hidden]{display:none}
-#player{position:absolute;inset:0;background:#000}
+#player,.sheet{position:absolute;inset:0;background:#000}
 #player iframe{width:100%;height:100%;border:0;display:block}
+.sheet{background:var(--red);color:var(--white);padding:5%;display:grid;align-content:space-between;gap:12px;overflow:auto}
+.sheet p{margin:0;max-width:36ch;font:400 clamp(17px,2.3cqw,31px)/1.28 var(--ui)}
+.specs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px 22px;font-size:clamp(13px,1.25cqw,16px)}
+.specs b{display:block;font-weight:600;color:#ffd0cc}
+.mail{font:400 clamp(21px,3.5cqw,48px)/1.2 var(--ui);overflow-wrap:anywhere;user-select:all}
+.copy{justify-self:start;padding:7px 16px;background:var(--white);color:#000;font-weight:600}
+.vbar{flex:none;display:flex;align-items:center;gap:14px;height:30px;padding:0 10px;background:var(--bar);color:var(--dim);overflow:hidden}
+.vbar button{color:var(--white);min-width:46px}
+.vbar span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
-.info{display:grid;align-content:space-between;gap:16px;min-width:0}
-.now{display:grid;gap:7px}
-.kind{font:500 13px var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--signal)}
-.now h2{font:400 clamp(25px,2.5vw,33px)/1.14 var(--display);letter-spacing:.02em;margin:0;text-wrap:balance}
-.now p{margin:0;color:var(--soft);font-size:15.5px;line-height:1.4}
-.now .y{font-variant-numeric:tabular-nums;color:var(--mid);font-size:14px}
-.ctl{display:grid;gap:10px}
-.cta{display:block;text-align:center;padding:11px 14px;background:var(--red);font:600 15px var(--display);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background .15s}
-.cta:hover{background:#a00d0d}.cta[hidden]{display:none}
-.trans{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line)}
-.trans button{padding:9px 4px;font:500 14px var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
-.trans button+button{border-left:1px solid var(--line)}
-.trans button:hover{background:var(--panel);color:var(--white)}
-.keys{margin:0;color:var(--mid);font-size:12.5px}
+.fxb{flex:1;overflow:auto;padding:8px 0;scrollbar-width:thin}
+.fxt{padding:2px 12px 10px;color:var(--white);font:500 21px/1.15 var(--ui);text-wrap:balance}
+.grp{padding:5px 12px;background:#2f2f2f;color:var(--white);border-block:1px solid var(--line)}
+.prop{display:grid;grid-template-columns:82px minmax(0,1fr);gap:8px;padding:4px 12px}
+.prop dt{color:var(--dim)}.prop dd{margin:0;color:var(--text);overflow-wrap:anywhere}
+dl{margin:0}
+.prop dd.val,.pv{font:400 13px var(--num);font-variant-numeric:tabular-nums;color:var(--hot)}
+.acts{display:grid;gap:6px;padding:12px}
+.cta{display:block;padding:9px 12px;background:var(--red);color:var(--white);font-weight:600;text-align:center}
+.cta:hover{background:#9c0b0b}
 
-.tl{min-width:0;background:var(--panel);border-top:1px solid var(--line)}
-.scroller{overflow-x:auto;scrollbar-width:thin;padding-left:var(--gutter);padding-right:var(--gutter-r)}
-.sheet{display:grid;grid-template-columns:96px minmax(0,1fr);min-width:1000px}
-.labels{display:grid;grid-template-rows:22px repeat(3,38px);font:500 12px/38px var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--mid)}
-.lanes{position:relative;touch-action:pan-x;cursor:ew-resize;user-select:none}
-.ruler{position:relative;height:22px;border-bottom:1px solid var(--line);overflow:hidden}
-.ruler span{position:absolute;top:3px;padding-left:4px;border-left:1px solid var(--line);font:400 10.5px/14px var(--body);font-variant-numeric:tabular-nums;color:var(--mid)}
-.lane{position:relative;height:38px;border-bottom:1px solid #232323}
-.clip{position:absolute;top:3px;bottom:3px;background:var(--clip) center/cover no-repeat;overflow:hidden;border-radius:2px;box-shadow:inset 0 0 0 1px #0007;padding:0}
-.clip::after{content:"";position:absolute;inset:0;background:#0009;transition:background .12s}
-.clip span{position:absolute;z-index:1;left:5px;top:50%;transform:translateY(-50%);max-width:calc(100% - 8px);overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font:500 11.5px var(--display);letter-spacing:.03em;color:#eee}
-.clip:hover::after{background:#0003}
-.clip.on{box-shadow:inset 0 0 0 2px var(--white)}
-.clip.on::after{background:#0000}
-.clip.slatey{background:#4a1414}.clip.slatey.on{background:var(--red)}
-.head{position:absolute;top:0;bottom:0;left:0;width:2px;margin-left:-1px;background:var(--signal);pointer-events:none;z-index:3;border-radius:2px}
-.head::before{content:"";position:absolute;top:0;left:-4px;width:10px;height:10px;background:var(--signal);border-radius:50% 50% 50% 50%/30% 30% 70% 70%}
+.tl{height:46vh}
+.tlh{flex:none;display:flex;align-items:center;gap:12px;height:34px;padding:0 12px;border-bottom:1px solid #111}
+#tc{font:500 19px var(--num);font-variant-numeric:tabular-nums;color:var(--hot);letter-spacing:.02em}
+.tlh small{font:400 12.5px var(--num);color:var(--dim)}
+.tlb{flex:1;overflow:auto;position:relative;scrollbar-width:thin;overscroll-behavior:contain}
+.rows{position:relative;min-width:680px}
+.row{display:grid;grid-template-columns:var(--lw) minmax(0,1fr);height:23px;border-bottom:1px solid #1e1e1e}
+.nm{display:flex;align-items:center;gap:7px;padding:0 8px;background:var(--panel);border-right:1px solid #111;min-width:0;position:sticky;left:0;z-index:2}
+.nm i{flex:none;width:18px;font:400 11.5px var(--num);font-style:normal;color:var(--dim);text-align:right}
+.nm u{flex:none;width:11px;height:11px;background:var(--c);text-decoration:none}
+.nm b{font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lane{position:relative;background:var(--well);cursor:ew-resize;touch-action:pan-y}
+.bar{position:absolute;top:2px;bottom:2px;background:var(--c);opacity:.5;border-radius:1px}
+.lay.on .nm{background:var(--red);color:var(--white)}.lay.on .nm i{color:#ffd0cc}.lay.on .nm u{background:var(--white)}
+.lay.on .bar{opacity:1;box-shadow:0 0 0 1px var(--white)}
+.lay:hover .bar{opacity:.85}
+.top{position:sticky;top:0;z-index:5;background:var(--panel)}
+.ruler{height:24px;border-bottom:1px solid #111}
+.ruler .nm{color:var(--dim)}
+.ruler .lane{overflow:hidden;background:#2b2b2b}
+.tick{position:absolute;top:0;bottom:0;padding:6px 0 0 4px;border-left:1px solid #666;font:400 10.5px/1 var(--num);color:var(--dim);font-variant-numeric:tabular-nums}
+.area{position:absolute;left:0;right:0;bottom:0;height:3px;background:#777}
+.kprop .nm{padding-left:32px;justify-content:space-between}
+.kprop .nm b{color:var(--dim);font-weight:500}
+.kprop .lane{background:#202020}
+.kf{position:absolute;top:50%;width:13px;height:13px;margin:-6.5px 0 0 -6.5px;display:grid;place-items:center;z-index:1}
+.kf::before{content:"";width:8px;height:8px;background:var(--text);transform:rotate(45deg)}
+.kf:hover::before,.kf.hit-now::before{background:var(--hot)}
+.head{position:absolute;top:0;bottom:0;left:0;width:2px;margin-left:-1px;background:var(--hot);pointer-events:none;z-index:4}
+.overlay{position:absolute;top:0;bottom:0;left:var(--lw);right:0;pointer-events:none;z-index:6}
+.overlay .head::before{content:"";position:absolute;top:0;left:-5px;border:6px solid transparent;border-top:9px solid var(--hot)}
 
-.page{background:var(--white);color:var(--black)}
-.page.grey{background:#d6d6d6}
-.in{max-width:1240px;margin:0 auto;padding-block:60px;padding-left:var(--gutter);padding-right:var(--gutter-r);display:grid;gap:30px}
-.page h2{display:inline-grid;justify-self:start;font:300 clamp(28px,3.6vw,40px)/1.15 var(--display);letter-spacing:.08em;text-transform:uppercase;margin:0}
-.page h2::before{content:"";height:2px;background:currentColor;border-radius:9px;margin-bottom:12px}
-.groups{display:grid;gap:34px}
-.group h3{font:600 14px var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin:0 0 4px}
-.group ul{list-style:none;margin:0;padding:0}
-.group li{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr) 170px;gap:2px 24px;padding:9px 0;border-bottom:1px solid #d3d3d3;align-items:baseline}
-.group li a,.group li button{font:500 19px/1.25 var(--display);letter-spacing:.02em;text-decoration:none;text-align:left}
-.group li a:hover,.group li button:hover{color:var(--red)}
-.ld{color:#4a4a4a;font-size:15px}.ly{color:#5c5c5c;font-size:14px;text-align:right;font-variant-numeric:tabular-nums}
-.about{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:28px 60px}
-.about p{margin:0;font:400 clamp(21px,2.2vw,27px)/1.3 var(--display);max-width:32ch}
-.tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 26px;font-size:15px}
-.tools b{display:block;font:600 13px var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:2px}
-.foot{background:var(--red)}
-.foot .in{padding-block:26px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 24px;font:400 19px var(--display);letter-spacing:.04em}
-.foot span:first-child{user-select:all}
-
-@media(min-width:980px) and (min-height:620px){
-  .app{height:100dvh;grid-template-rows:auto minmax(0,1fr) auto}
-  .stage{grid-template-columns:minmax(0,1fr) 300px;gap:26px}
-  .mwrap{container-type:size;display:grid;place-items:center start}
-  .monitor{width:min(100cqw,calc(100cqh * 16 / 9))}
-  .sheet{min-width:0}
+@media(min-width:1000px) and (min-height:640px){
+  html,body{height:100%;overflow:hidden}
+  .ws{height:100dvh;grid-template-columns:238px minmax(0,1fr) 268px;grid-template-rows:34px minmax(0,1fr) clamp(250px,37vh,380px);grid-template-areas:"menu menu menu" "project comp fx" "tl tl tl"}
+  .menu{grid-area:menu}.project{grid-area:project}.comp{grid-area:comp}.fx{grid-area:fx}.tl{grid-area:tl;height:auto}
 }
-@media(max-width:979px){.keys{display:none}.ctl{grid-template-columns:minmax(0,1fr)}.about{grid-template-columns:minmax(0,1fr)}}
-@media(max-width:640px){
-  .top nav{gap:14px;font-size:13px}.mark{font-size:16px}
-  .group li{grid-template-columns:minmax(0,1fr)}.ly{text-align:left}
-  .tools{grid-template-columns:minmax(0,1fr)}.in{padding-block:44px}
-  .sheet{grid-template-columns:44px minmax(0,1fr)}.labels span{overflow:hidden;white-space:nowrap;width:36px}
+@media(max-width:999px),(max-height:639px){
+  .menu{order:0}.comp{order:1}.fx{order:2}.tl{order:3}.project{order:4}
+  .comp .view{container-type:inline-size;display:block;flex:none;padding:0}
+  .canvas{width:100%}
+  .fxb{overflow:visible}.tree{overflow:visible}
+  .vbar span{display:none}
+  .tl{height:54vh;min-height:330px}
+  :root{--lw:178px}
+  .sheet{font-size:13px}
 }
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.monitor img.on{animation:none}*{transition:none!important}}
+@media(max-width:560px){
+  .menu p{font-size:13px}
+  .specs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sheet{position:relative;min-height:100%;aspect-ratio:auto}
+  .canvas.tall{aspect-ratio:auto;min-height:56vw}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
-<div class="app" id="top">
-  <header class="top">
-    <h1 class="mark"><a href="#top">Māris Mīlgrāvis</a></h1>
-    <nav aria-label="Page"><a href="#index">Index</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
-  </header>
+<div class="ws">
+  <header class="menu"><h1><a href="./">Māris Mīlgrāvis</a></h1><p>Visual and motion designer</p></header>
 
-  <main class="stage">
-    <div class="mwrap">
-      <div class="monitor" id="monitor">
-        <img id="fa" alt=""><img id="fb" alt="">
-        <div class="slate" id="slate"><b id="st"></b><span id="sd"></span></div>
-        <button class="hit" id="hit" type="button" aria-label="Play this film"><span>Play film</span></button>
-        <div id="player" hidden></div>
-        <div class="hud" id="hud"><i id="state">Reel</i><span id="tc">00:00:00:00</span></div>
-      </div>
+  <section class="panel project" aria-label="Project"><div class="ph"><span>Project</span></div><div class="tree"><details class="dir" open><summary>Stage and live<em>7</em></summary><ul><li><button class="it k-s" type="button" data-clip="2">Laima Rendezvous</button></li><li><a class="it k-s" href="https://staroriga.lv/lv/objects/rigas-teserakts-2019/" data-clip="5" target="_blank" rel="noopener">Riga Tesseract</a></li><li><button class="it k-s" type="button" data-clip="8">Zelta Mikrofons</button></li><li><button class="it k-s" type="button" data-clip="12">MikroTik</button></li><li><button class="it k-s" type="button" data-clip="15">Labvakar, Rīga! Labvakar, Latvija!</button></li><li><button class="it k-s" type="button" data-clip="18">X Factor Latvia</button></li><li><button class="it k-s" type="button" data-clip="19">Latgola.lv and Latgola.lv 2</button></li></ul></details><details class="dir" open><summary>Television<em>7</em></summary><ul><li><a class="it k-t" href="https://www.youtube.com/watch?v=T9bWuK5CzYk" data-clip="0" target="_blank" rel="noopener">Zelta Mikrofons 2025</a></li><li><a class="it k-t" href="https://www.youtube.com/watch?v=PfJA4nSMTzY" data-clip="3" target="_blank" rel="noopener">Olympic Games</a></li><li><a class="it k-t" href="https://www.youtube.com/watch?v=WUbDXrP-pHY" data-clip="6" target="_blank" rel="noopener">Election Night</a></li><li><a class="it k-t" href="https://www.youtube.com/watch?v=b85kvrauR98" data-clip="9" target="_blank" rel="noopener">Panorāma: gas market</a></li><li><a class="it k-t" href="https://replay.lsm.lv/lv/skaties/ieraksts/ltv/296657/dziesmas-cels-manai-dzimtenei" data-clip="11" target="_blank" rel="noopener">Dziesmas ceļš. Manai dzimtenei</a></li><li><a class="it k-t" href="https://www.youtube.com/watch?v=bl416xiHgk4" data-clip="13" target="_blank" rel="noopener">De Facto: Envestio</a></li><li><a class="it k-t" href="https://www.youtube.com/watch?v=kA1XcQyRHvU" data-clip="16" target="_blank" rel="noopener">De Facto: snow crabs</a></li></ul></details><details class="dir" open><summary>Advertising and animation<em>6</em></summary><ul><li><a class="it k-a" href="https://www.youtube.com/watch?v=L-keeAzyuoE" data-clip="1" target="_blank" rel="noopener">Zolt LV</a></li><li><a class="it k-a" href="https://www.youtube.com/watch?v=ZbuHCgc5MGY" data-clip="4" target="_blank" rel="noopener">Cilmes šūnu banka</a></li><li><a class="it k-a" href="https://www.youtube.com/watch?v=reOU-ONkq1g" data-clip="7" target="_blank" rel="noopener">Riga Plaza</a></li><li><a class="it k-a" href="https://www.youtube.com/watch?v=NQYkkKi5FVI" data-clip="10" target="_blank" rel="noopener">Energy literacy</a></li><li><a class="it k-a" href="https://www.youtube.com/watch?v=EL7fGSpwYI4" data-clip="14" target="_blank" rel="noopener">Adult education series</a></li><li><a class="it k-a" href="https://www.youtube.com/watch?v=-5NASUHqy5A" data-clip="17" target="_blank" rel="noopener">Energy PROSPECTS</a></li></ul></details></div></section>
+
+  <main class="panel comp">
+    <div class="ph" role="tablist" aria-label="Composition">
+      <button type="button" role="tab" class="on" data-tab="reel" aria-selected="true">Selected work</button>
+      <button type="button" role="tab" data-tab="about" aria-selected="false">About</button>
+      <button type="button" role="tab" data-tab="contact" aria-selected="false">Contact</button>
     </div>
-    <aside class="info" aria-live="polite">
-      <div class="now">
-        <span class="kind" id="kind"></span>
-        <h2 id="title"></h2>
-        <p id="desc"></p>
-        <p class="y" id="year"></p>
-      </div>
-      <div class="ctl">
-        <button class="cta" id="film" type="button">Play film</button>
-        <a class="cta" id="open" target="_blank" rel="noopener" hidden>Open project ↗</a>
-        <div class="trans">
-          <button id="prev" type="button" aria-label="Previous clip">Prev</button>
-          <button id="toggle" type="button">Pause</button>
-          <button id="next" type="button" aria-label="Next clip">Next</button>
+    <div class="view"><div class="canvas" id="canvas">
+      <div id="stack"></div>
+      <button class="hit" id="hit" type="button" aria-label="Play this film"><span>Play film</span></button>
+      <div id="player" hidden></div>
+      <div class="sheet" id="about" hidden>
+        <h2>About</h2>
+        <p>20 years of design and moving image for advertising, television, stage and public-sector campaigns. I take work from concept to final delivery.</p>
+        <div class="specs">
+          <div><b>Motion and video</b>After Effects, Premiere Pro, Animate, Final Cut Pro</div>
+          <div><b>Design</b>Figma, Illustrator, Photoshop, InDesign, CorelDRAW</div>
+          <div><b>AI</b>Claude, OpenAI, Grok, AI image and video tools</div>
+          <div><b>Digital</b>HTML5 banners, HTML, JavaScript, creative coding</div>
+          <div><b>Background</b>Founder of studio KOMŪNA7, Latvian Television 2021–2023</div>
+          <div><b>Languages</b>Latvian, English (C1), Russian (B2)</div>
         </div>
-        <p class="keys">Drag the timeline to scrub. Space plays, arrows cut, Enter opens the film.</p>
       </div>
-    </aside>
+      <div class="sheet" id="contact" hidden>
+        <h2>Contact</h2>
+        <div class="mail" id="mail">milgravismaris@gmail.com</div>
+        <button class="copy" id="copy" type="button">Copy email</button>
+        <p>Jūrmala, Latvia</p>
+      </div>
+    </div></div>
+    <div class="vbar"><button type="button" id="toggle">Pause</button><span>Drag the timeline to scrub. Space plays, arrows jump between layers, Enter opens the film.</span></div>
   </main>
 
-  <section class="tl" aria-label="Timeline of selected work">
-    <div class="scroller" id="scroller">
-      <div class="sheet">
-        <div class="labels" aria-hidden="true"><span></span><span>Stage</span><span>TV</span><span>Ads</span></div>
-        <div class="lanes" id="lanes"><div class="ruler" id="ruler"></div><div class="lane" data-k="s"></div><div class="lane" data-k="t"></div><div class="lane" data-k="a"></div><div class="head" id="head"></div></div>
-      </div>
+  <aside class="panel fx" aria-label="Effect controls">
+    <div class="ph"><span>Effect controls</span></div>
+    <div class="fxb" aria-live="polite">
+      <div class="fxt" id="title"></div>
+      <dl>
+        <div class="prop"><dt>Work</dt><dd id="desc"></dd></div>
+        <div class="prop"><dt>Year</dt><dd id="year"></dd></div>
+        <div class="prop"><dt>Category</dt><dd id="kind"></dd></div>
+      </dl>
+      <div class="acts"><button class="cta" id="film" type="button">Play film</button><a class="cta" id="open" target="_blank" rel="noopener" hidden>Open project</a></div>
+      <div class="grp">Transform</div>
+      <dl>
+        <div class="prop"><dt>Position</dt><dd class="val" id="fp"></dd></div>
+        <div class="prop"><dt>Scale</dt><dd class="val" id="fs"></dd></div>
+        <div class="prop"><dt>Opacity</dt><dd class="val" id="fo"></dd></div>
+      </dl>
     </div>
+  </aside>
+
+  <section class="panel tl" aria-label="Timeline of selected work">
+    <div class="ph"><span>Selected work</span></div>
+    <div class="tlh"><span id="tc">00:00:00:00</span><small id="frame"></small></div>
+    <div class="tlb" id="tlb"><div class="rows" id="rows">
+      <div class="top">
+        <div class="row ruler"><div class="nm">Layer name</div><div class="lane" id="ruler"><div class="area"></div></div></div>
+        <div class="row kprop"><div class="nm"><b>Position</b><span class="pv" id="pp"></span></div><div class="lane" data-prop="p"></div></div>
+        <div class="row kprop"><div class="nm"><b>Scale</b><span class="pv" id="ps"></span></div><div class="lane" data-prop="s"></div></div>
+        <div class="row kprop"><div class="nm"><b>Opacity</b><span class="pv" id="po"></span></div><div class="lane" data-prop="o"></div></div>
+      </div>
+      <div id="layers"></div>
+      <div class="overlay"><div class="head" id="head"></div></div>
+    </div></div>
   </section>
 </div>
-
-<section class="page" id="index"><div class="in"><h2>Index</h2><div class="groups"><div class="group"><h3>Stage and live</h3><ul><li><button type="button" data-clip="2">Laima Rendezvous</button><span class="ld">Video services for the festival</span><span class="ly">2023, 2024, 2025</span></li><li><a href="https://staroriga.lv/lv/objects/rigas-teserakts-2019/" data-clip="5" target="_blank" rel="noopener">Riga Tesseract</a><span class="ld">Co-author and project manager, Staro Rīga light festival</span><span class="ly">2019</span></li><li><button type="button" data-clip="8">Zelta Mikrofons</button><span class="ld">Stage video projections</span><span class="ly">2011–2019, 2021, 2023</span></li><li><button type="button" data-clip="12">MikroTik</button><span class="ld">Commercial: direction, filming, post-production, editing</span><span class="ly">2016</span></li><li><button type="button" data-clip="15">Labvakar, Rīga! Labvakar, Latvija!</button><span class="ld">Video projections, 11 November Embankment</span><span class="ly">2018</span></li><li><button type="button" data-clip="18">X Factor Latvia</button><span class="ld">Video projection design for the TV show</span><span class="ly"></span></li><li><button type="button" data-clip="19">Latgola.lv and Latgola.lv 2</button><span class="ld">Video design, Latvian National Theatre</span><span class="ly">2010, 2014</span></li></ul></div><div class="group"><h3>Television</h3><ul><li><a href="https://www.youtube.com/watch?v=T9bWuK5CzYk" data-clip="0" target="_blank" rel="noopener">Zelta Mikrofons 2025</a><span class="ld">Title sequence for the music awards</span><span class="ly">2025</span></li><li><a href="https://www.youtube.com/watch?v=PfJA4nSMTzY" data-clip="3" target="_blank" rel="noopener">Olympic Games</a><span class="ld">Broadcast title sequence, Latvian Television</span><span class="ly">2022</span></li><li><a href="https://www.youtube.com/watch?v=WUbDXrP-pHY" data-clip="6" target="_blank" rel="noopener">Election Night</a><span class="ld">Broadcast video graphics, Latvian Television</span><span class="ly">2022</span></li><li><a href="https://www.youtube.com/watch?v=b85kvrauR98" data-clip="9" target="_blank" rel="noopener">Panorāma: gas market</a><span class="ld">News infographics, Latvian Television</span><span class="ly">2023</span></li><li><a href="https://replay.lsm.lv/lv/skaties/ieraksts/ltv/296657/dziesmas-cels-manai-dzimtenei" data-clip="11" target="_blank" rel="noopener">Dziesmas ceļš. Manai dzimtenei</a><span class="ld">Title sequence, Latvian Television</span><span class="ly">2023</span></li><li><a href="https://www.youtube.com/watch?v=bl416xiHgk4" data-clip="13" target="_blank" rel="noopener">De Facto: Envestio</a><span class="ld">Animation for an investigative story</span><span class="ly">2022</span></li><li><a href="https://www.youtube.com/watch?v=kA1XcQyRHvU" data-clip="16" target="_blank" rel="noopener">De Facto: snow crabs</a><span class="ld">Animation for an investigative story</span><span class="ly">2022</span></li></ul></div><div class="group"><h3>Advertising and animation</h3><ul><li><a href="https://www.youtube.com/watch?v=L-keeAzyuoE" data-clip="1" target="_blank" rel="noopener">Zolt LV</a><span class="ld">Animated commercial</span><span class="ly"></span></li><li><a href="https://www.youtube.com/watch?v=ZbuHCgc5MGY" data-clip="4" target="_blank" rel="noopener">Cilmes šūnu banka</a><span class="ld">Animated video ad for a stem cell bank</span><span class="ly">2025</span></li><li><a href="https://www.youtube.com/watch?v=reOU-ONkq1g" data-clip="7" target="_blank" rel="noopener">Riga Plaza</a><span class="ld">Shopping as an Experience. Video for the shopping centre</span><span class="ly"></span></li><li><a href="https://www.youtube.com/watch?v=NQYkkKi5FVI" data-clip="10" target="_blank" rel="noopener">Energy literacy</a><span class="ld">Animation, Riga Environmental Protection Fund</span><span class="ly">2022</span></li><li><a href="https://www.youtube.com/watch?v=EL7fGSpwYI4" data-clip="14" target="_blank" rel="noopener">Adult education series</a><span class="ld">Animated videos, Ministry of Education and Science</span><span class="ly">2022</span></li><li><a href="https://www.youtube.com/watch?v=-5NASUHqy5A" data-clip="17" target="_blank" rel="noopener">Energy PROSPECTS</a><span class="ld">Video graphics for an EU project</span><span class="ly">2023</span></li></ul></div></div></div></section>
-
-<section class="page grey" id="about"><div class="in"><h2>About</h2><div class="about">
-  <p>20 years of design and moving image for advertising, television, stage and public-sector campaigns. I take work from concept to final delivery.</p>
-  <div class="tools">
-    <div><b>Motion and video</b>After Effects, Premiere Pro, Animate, Final Cut Pro</div>
-    <div><b>Design</b>Figma, Illustrator, Photoshop, InDesign, CorelDRAW</div>
-    <div><b>AI</b>Claude, OpenAI, Grok, AI image and video tools</div>
-    <div><b>Digital</b>HTML5 banners, HTML, JavaScript, creative coding</div>
-    <div><b>Background</b>Founder of studio KOMŪNA7, Latvian Television 2021–2023</div>
-    <div><b>Languages</b>Latvian, English (C1), Russian (B2)</div>
-  </div>
-</div></div></section>
-
-<footer class="foot" id="contact"><div class="in"><span>milgravismaris@gmail.com</span><span>Jūrmala, Latvia</span></div></footer>
 
 <script>
 (function(){
   var CLIPS=[{"v": "T9bWuK5CzYk", "k": "t", "t": "Zelta Mikrofons 2025", "d": "Title sequence for the music awards", "y": "2025", "u": "https://www.youtube.com/watch?v=T9bWuK5CzYk"}, {"v": "L-keeAzyuoE", "k": "a", "t": "Zolt LV", "d": "Animated commercial", "y": "", "u": "https://www.youtube.com/watch?v=L-keeAzyuoE"}, {"v": "", "k": "s", "t": "Laima Rendezvous", "d": "Video services for the festival", "y": "2023, 2024, 2025", "u": ""}, {"v": "PfJA4nSMTzY", "k": "t", "t": "Olympic Games", "d": "Broadcast title sequence, Latvian Television", "y": "2022", "u": "https://www.youtube.com/watch?v=PfJA4nSMTzY"}, {"v": "ZbuHCgc5MGY", "k": "a", "t": "Cilmes šūnu banka", "d": "Animated video ad for a stem cell bank", "y": "2025", "u": "https://www.youtube.com/watch?v=ZbuHCgc5MGY"}, {"v": "", "k": "s", "t": "Riga Tesseract", "d": "Co-author and project manager, Staro Rīga light festival", "y": "2019", "u": "https://staroriga.lv/lv/objects/rigas-teserakts-2019/"}, {"v": "WUbDXrP-pHY", "k": "t", "t": "Election Night", "d": "Broadcast video graphics, Latvian Television", "y": "2022", "u": "https://www.youtube.com/watch?v=WUbDXrP-pHY"}, {"v": "reOU-ONkq1g", "k": "a", "t": "Riga Plaza", "d": "Shopping as an Experience. Video for the shopping centre", "y": "", "u": "https://www.youtube.com/watch?v=reOU-ONkq1g"}, {"v": "", "k": "s", "t": "Zelta Mikrofons", "d": "Stage video projections", "y": "2011–2019, 2021, 2023", "u": ""}, {"v": "b85kvrauR98", "k": "t", "t": "Panorāma: gas market", "d": "News infographics, Latvian Television", "y": "2023", "u": "https://www.youtube.com/watch?v=b85kvrauR98"}, {"v": "NQYkkKi5FVI", "k": "a", "t": "Energy literacy", "d": "Animation, Riga Environmental Protection Fund", "y": "2022", "u": "https://www.youtube.com/watch?v=NQYkkKi5FVI"}, {"v": "", "k": "t", "t": "Dziesmas ceļš. Manai dzimtenei", "d": "Title sequence, Latvian Television", "y": "2023", "u": "https://replay.lsm.lv/lv/skaties/ieraksts/ltv/296657/dziesmas-cels-manai-dzimtenei"}, {"v": "", "k": "s", "t": "MikroTik", "d": "Commercial: direction, filming, post-production, editing", "y": "2016", "u": ""}, {"v": "bl416xiHgk4", "k": "t", "t": "De Facto: Envestio", "d": "Animation for an investigative story", "y": "2022", "u": "https://www.youtube.com/watch?v=bl416xiHgk4"}, {"v": "EL7fGSpwYI4", "k": "a", "t": "Adult education series", "d": "Animated videos, Ministry of Education and Science", "y": "2022", "u": "https://www.youtube.com/watch?v=EL7fGSpwYI4"}, {"v": "", "k": "s", "t": "Labvakar, Rīga! Labvakar, Latvija!", "d": "Video projections, 11 November Embankment", "y": "2018", "u": ""}, {"v": "kA1XcQyRHvU", "k": "t", "t": "De Facto: snow crabs", "d": "Animation for an investigative story", "y": "2022", "u": "https://www.youtube.com/watch?v=kA1XcQyRHvU"}, {"v": "-5NASUHqy5A", "k": "a", "t": "Energy PROSPECTS", "d": "Video graphics for an EU project", "y": "2023", "u": "https://www.youtube.com/watch?v=-5NASUHqy5A"}, {"v": "", "k": "s", "t": "X Factor Latvia", "d": "Video projection design for the TV show", "y": "", "u": ""}, {"v": "", "k": "s", "t": "Latgola.lv and Latgola.lv 2", "d": "Video design, Latvian National Theatre", "y": "2010, 2014", "u": ""}];
   var NAMES={a:"Advertising and animation",t:"Television",s:"Stage and live"};
-  var FPS=25, VIDEO=4.2, CARD=2.4;
+  var FPS=25, VIDEO=4.4, CARD=2.8, OVERLAP=.4;
+  var MOVES=[[150,0,114],[-150,0,114],[0,90,108],[0,0,126],[0,-90,108]];
   var $=function(id){return document.getElementById(id)};
-  var total=0;
-  CLIPS.forEach(function(c){c.at=total;c.len=c.v?VIDEO:CARD;total+=c.len});
+  var total=.3;
 
-  var reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var playing=!reduced, t=0, cur=-1, shown=-1, last=0, dragging=false, front=$("fa"), back=$("fb");
-  var scroller=$("scroller"), lanes=$("lanes"), els=[];
+  CLIPS.forEach(function(c,i){
+    c.len=c.v?VIDEO:CARD; c.at=total; total+=c.len-OVERLAP;
+    var m=MOVES[i%MOVES.length];
+    c.keys={
+      x:[[0,m[0]],[.7,0],[c.len,0]],
+      y:[[0,m[1]],[.7,0],[c.len,0]],
+      s:[[0,m[2]],[.7,100,1],[c.len,104]],
+      o:[[0,0],[.35,100],[c.len-OVERLAP,100],[c.len,0]]
+    };
+  });
+  total+=OVERLAP;
 
+  function ease(x){return x*x*(3-2*x)}
+  function value(keys,u){
+    if(u<=keys[0][0]) return keys[0][1];
+    for(var i=0;i<keys.length-1;i++){
+      var a=keys[i], b=keys[i+1];
+      if(u<=b[0]){var x=(u-a[0])/(b[0]-a[0]);return a[1]+(b[1]-a[1])*(a[2]?x:ease(x))}
+    }
+    return keys[keys.length-1][1];
+  }
   function tc(s){
     var f=Math.floor(s*FPS), p=function(n){return String(n).padStart(2,"0")};
     return p(Math.floor(f/(FPS*3600)))+":"+p(Math.floor(f/(FPS*60))%60)+":"+p(Math.floor(f/FPS)%60)+":"+p(f%FPS);
   }
-  function at(s){
+  function indexAt(s){
     for(var i=CLIPS.length-1;i>=0;i--) if(s>=CLIPS[i].at) return i;
     return 0;
   }
   function src(c){return "assets/"+c.v+".jpg"}
+  function pct(s){return (s/total*100)+"%"}
+
+  var reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var playing=!reduced, t=reduced?1:0, cur=-1, last=0, dragging=false, tab="reel";
+  var stack=$("stack"), layers=$("layers"), tlb=$("tlb"), rows=[], lyrs=[], items={};
 
   CLIPS.forEach(function(c,i){
-    var b=document.createElement("button");
-    b.type="button"; b.className="clip"+(c.v?"":" slatey");
-    b.style.left=(c.at/total*100)+"%"; b.style.width="calc("+(c.len/total*100)+"% - 2px)";
-    if(c.v) b.style.backgroundImage="url("+src(c)+")";
-    b.setAttribute("aria-label",c.t);
-    b.innerHTML="<span></span>"; b.firstChild.textContent=c.t;
-    b.addEventListener("click",function(){stop();seek(c.at+.001)});
-    b.addEventListener("pointerenter",function(e){if(e.pointerType==="mouse"&&!dragging&&!isFilm()) display(i)});
-    lanes.querySelector('[data-k="'+c.k+'"]').appendChild(b); els.push(b);
-  });
-  lanes.addEventListener("pointerleave",function(){if(!dragging&&!isFilm()) display(cur)});
+    var l=document.createElement("div");
+    l.className="lyr"+(c.v?"":" card");
+    if(c.v){var im=document.createElement("img");im.alt="Frame from "+c.t;im.decoding="async";l.appendChild(im)}
+    else{var b=document.createElement("b"),d=document.createElement("span");b.textContent=c.t;d.textContent=c.d;l.appendChild(b);l.appendChild(d)}
+    stack.appendChild(l); lyrs.push(l);
 
+    var r=document.createElement("div");
+    r.className="row lay k-"+c.k;
+    r.innerHTML='<button type="button" class="nm"><i></i><u></u><b></b></button><div class="lane"><div class="bar"></div></div>';
+    r.querySelector("i").textContent=i+1;
+    r.querySelector("b").textContent=c.t;
+    r.querySelector(".nm").setAttribute("aria-label","Go to "+c.t);
+    var bar=r.querySelector(".bar"); bar.style.left=pct(c.at); bar.style.width=pct(c.len);
+    r.querySelector(".nm").addEventListener("click",function(){go(i)});
+    layers.appendChild(r); rows.push(r);
+  });
+  document.querySelectorAll("[data-clip]").forEach(function(a){
+    var n=+a.getAttribute("data-clip"); items[n]=a;
+    a.addEventListener("click",function(e){
+      e.preventDefault(); go(n);
+      if(CLIPS[n].v) openFilm();
+      if(innerWidth<1000) $("canvas").scrollIntoView({block:"start"});
+    });
+  });
   var ruler=$("ruler");
   for(var s=0;s<total;s+=5){
-    var m=document.createElement("span"); m.style.left=(s/total*100)+"%"; m.textContent=tc(s).slice(3,8); ruler.appendChild(m);
+    var m=document.createElement("span"); m.className="tick"; m.style.left=pct(s); m.textContent=tc(s).slice(3,8); ruler.appendChild(m);
   }
 
-  function isFilm(){return !$("player").hidden}
-
-  function display(i){
-    if(i===shown) return;
-    shown=i;
+  function load(i){
     var c=CLIPS[i];
-    els.forEach(function(e,n){e.classList.toggle("on",n===i)});
-    $("kind").textContent=NAMES[c.k];
-    $("title").textContent=c.t;
-    $("desc").textContent=c.d;
-    $("year").textContent=c.y;
-    $("film").hidden=!c.v;
-    $("hit").hidden=!c.v;
+    if(c&&c.v){var im=lyrs[i].firstChild; if(!im.getAttribute("src")) im.src=src(c)}
+  }
+  function drawKeys(c){
+    [["p",c.keys.x],["s",c.keys.s],["o",c.keys.o]].forEach(function(p){
+      var lane=document.querySelector('[data-prop="'+p[0]+'"]'); lane.innerHTML="";
+      p[1].forEach(function(k){
+        var b=document.createElement("button");
+        b.type="button"; b.className="kf"; b.style.left=pct(c.at+k[0]);
+        b.setAttribute("aria-label","Go to keyframe at "+tc(c.at+k[0]));
+        b.dataset.time=c.at+k[0];
+        b.addEventListener("click",function(e){e.stopPropagation();closeSheets();closeFilm();stop();seek(+b.dataset.time+.001)});
+        b.addEventListener("pointerdown",function(e){e.stopPropagation()});
+        lane.appendChild(b);
+      });
+    });
+  }
+  function select(i){
+    if(i===cur) return;
+    if(items[cur]) items[cur].classList.remove("it-on","on");
+    if(rows[cur]) rows[cur].classList.remove("on");
+    cur=i;
+    var c=CLIPS[i];
+    rows[i].classList.add("on");
+    if(items[i]) items[i].classList.add("on");
+    $("title").textContent=c.t; $("desc").textContent=c.d; $("year").textContent=c.y||"Not dated"; $("kind").textContent=NAMES[c.k];
+    $("film").hidden=!c.v; $("hit").hidden=!c.v;
     var o=$("open");
     if(!c.v&&c.u){o.hidden=false;o.href=c.u}else{o.hidden=true;o.removeAttribute("href")}
-    if(c.v){
-      var img=back; back=front; front=img;
-      img.onload=function(){img.classList.add("on");back.classList.remove("on")};
-      img.alt="Frame from "+c.t;
-      img.src=src(c);
-      if(img.complete&&img.naturalWidth){img.classList.add("on");back.classList.remove("on")}
-      $("slate").classList.remove("on");
-    }else{
-      $("st").textContent=c.t; $("sd").textContent=c.d;
-      $("slate").classList.add("on");
-      front.classList.remove("on"); back.classList.remove("on");
+    drawKeys(c); load(i); load(i+1); load((i+2)%CLIPS.length);
+    if(playing){
+      var top=rows[i].offsetTop, h=tlb.clientHeight, st=tlb.scrollTop, sticky=96;
+      if(top<st+sticky||top+24>st+h) tlb.scrollTop=Math.max(0,top-sticky-24);
     }
-    var next=CLIPS[(i+1)%CLIPS.length]; if(next.v){new Image().src=src(next)}
   }
-
-  function paint(){
-    $("head").style.left=(t/total*100)+"%";
+  function render(){
+    CLIPS.forEach(function(c,i){
+      var u=t-c.at, on=u>=0&&u<=c.len, l=lyrs[i];
+      if(!on){if(l.style.visibility!=="hidden") l.style.visibility="hidden";return}
+      var x=value(c.keys.x,u), y=value(c.keys.y,u), sc=value(c.keys.s,u), op=value(c.keys.o,u);
+      l.style.visibility="visible";
+      l.style.opacity=op/100;
+      l.style.transform="translate("+(x/19.2)+"%,"+(y/10.8)+"%) scale("+(sc/100)+")";
+    });
+    var i=indexAt(t); select(i);
+    var c=CLIPS[i], u=t-c.at;
+    var px=(960+value(c.keys.x,u)).toFixed(1)+", "+(540+value(c.keys.y,u)).toFixed(1);
+    var ss=value(c.keys.s,u).toFixed(1)+"%", oo=value(c.keys.o,u).toFixed(0)+"%";
+    $("fp").textContent=px; $("fs").textContent=ss; $("fo").textContent=oo;
+    $("pp").textContent=px; $("ps").textContent=ss; $("po").textContent=oo;
     $("tc").textContent=tc(t);
-    if(scroller.scrollWidth>scroller.clientWidth&&!dragging){
-      var x=lanes.offsetLeft+lanes.offsetWidth*(t/total)-scroller.clientWidth/2;
-      if(playing) scroller.scrollLeft=x;
+    $("frame").textContent=Math.floor(t*FPS)+" frames";
+    $("head").style.left=pct(t);
+    document.querySelectorAll(".kf").forEach(function(k){k.classList.toggle("hit-now",Math.abs(+k.dataset.time-t)<.09)});
+    if(playing&&tlb.scrollWidth>tlb.clientWidth){
+      var lane=rows[0].querySelector(".lane"), x2=lane.offsetLeft+lane.offsetWidth*(t/total)-tlb.clientWidth*.62;
+      tlb.scrollLeft=Math.max(0,x2);
     }
   }
-  function seek(s){
-    t=(s+total)%total;
-    var i=at(t);
-    if(i!==cur){cur=i;if(!isFilm()) display(i)}
-    paint();
-  }
+  function seek(s){t=(s+total)%total;render()}
   function ui(){
     $("toggle").textContent=playing?"Pause":"Play";
-    $("state").textContent=isFilm()?"Film":(playing?"Reel":"Paused");
-    $("hud").classList.toggle("paused",!playing&&!isFilm());
-    $("hud").hidden=isFilm();
   }
   function stop(){playing=false;ui()}
-  function play(){closeFilm();playing=true;last=0;ui()}
-  function cut(d){
-    closeFilm();stop();
-    var n=(cur+d+CLIPS.length)%CLIPS.length;
-    seek(CLIPS[n].at+.001);
-  }
+  function play(){closeSheets();closeFilm();playing=true;last=0;ui()}
+  function go(i){closeSheets();closeFilm();stop();seek(CLIPS[i].at+Math.min(1,CLIPS[i].len/2))}
+  function isFilm(){return !$("player").hidden}
   function openFilm(){
     var c=CLIPS[cur];
-    if(shown!==cur) display(cur);
-    if(!c.v) return;
-    stop();
+    if(!c||!c.v) return;
+    closeSheets(); stop();
     var p=$("player"), f=document.createElement("iframe");
     f.src="https://www.youtube-nocookie.com/embed/"+c.v+"?autoplay=1&rel=0&playsinline=1";
     f.title=c.t; f.allow="autoplay; encrypted-media; picture-in-picture; fullscreen"; f.allowFullscreen=true;
     p.innerHTML=""; p.appendChild(f); p.hidden=false;
     $("film").textContent="Back to reel";
-    ui();
   }
   function closeFilm(){
     var p=$("player");
     if(p.hidden) return;
-    p.innerHTML=""; p.hidden=true;
-    $("film").textContent="Play film";
-    shown=-1; display(cur); ui();
+    p.innerHTML=""; p.hidden=true; $("film").textContent="Play film";
   }
+  function setTab(n){
+    tab=n;
+    document.querySelectorAll("[data-tab]").forEach(function(b){var on=b.dataset.tab===n;b.classList.toggle("on",on);b.setAttribute("aria-selected",on)});
+    $("about").hidden=n!=="about"; $("contact").hidden=n!=="contact";
+    $("canvas").classList.toggle("tall",n!=="reel");
+  }
+  function closeSheets(){if(tab!=="reel") setTab("reel")}
 
+  document.querySelectorAll("[data-tab]").forEach(function(b){
+    b.addEventListener("click",function(){
+      var n=b.dataset.tab;
+      closeFilm();
+      if(n==="reel"){play();return}
+      stop(); setTab(n);
+    });
+  });
   $("film").addEventListener("click",function(){isFilm()?play():openFilm()});
   $("hit").addEventListener("click",openFilm);
-  $("prev").addEventListener("click",function(){cut(-1)});
-  $("next").addEventListener("click",function(){cut(1)});
   $("toggle").addEventListener("click",function(){playing?stop():play()});
+  $("copy").addEventListener("click",function(){
+    var b=this, done=function(){b.textContent="Email copied"};
+    if(navigator.clipboard) navigator.clipboard.writeText($("mail").textContent).then(done,function(){getSelection().selectAllChildren($("mail"))});
+    else getSelection().selectAllChildren($("mail"));
+  });
 
   function fromPointer(e){
-    var r=lanes.getBoundingClientRect();
+    var r=rows[0].querySelector(".lane").getBoundingClientRect();
     seek(Math.max(0,Math.min(total-.001,(e.clientX-r.left)/r.width*total)));
   }
-  lanes.addEventListener("pointerdown",function(e){
-    if(e.pointerType!=="mouse") return;
-    dragging=true; closeFilm(); stop(); lanes.setPointerCapture(e.pointerId); fromPointer(e); display(cur);
+  var rowsEl=$("rows");
+  rowsEl.addEventListener("pointerdown",function(e){
+    if(!e.target.closest(".lane")||e.target.closest(".kf")) return;
+    if(e.pointerType==="touch"){return}
+    dragging=true; closeSheets(); closeFilm(); stop(); rowsEl.setPointerCapture(e.pointerId); fromPointer(e);
   });
-  lanes.addEventListener("pointermove",function(e){if(dragging){fromPointer(e);display(cur)}});
-  lanes.addEventListener("pointerup",function(){dragging=false});
-  lanes.addEventListener("pointercancel",function(){dragging=false});
-
-  document.querySelectorAll("[data-clip]").forEach(function(a){
-    var n=+a.getAttribute("data-clip");
-    a.addEventListener("click",function(e){
-      if(!CLIPS[n].v) return;
-      e.preventDefault();
-      closeFilm(); stop(); seek(CLIPS[n].at+.001); display(n);
-      $("top").scrollIntoView();
-      openFilm();
-    });
+  rowsEl.addEventListener("pointermove",function(e){if(dragging) fromPointer(e)});
+  function endDrag(){dragging=false}
+  rowsEl.addEventListener("pointerup",endDrag);
+  rowsEl.addEventListener("pointercancel",endDrag);
+  rowsEl.addEventListener("click",function(e){
+    var lane=e.target.closest(".lane");
+    if(!lane||e.target.closest(".kf")||!matchMedia("(pointer: coarse)").matches) return;
+    closeSheets(); closeFilm(); stop(); fromPointer(e);
   });
 
   addEventListener("keydown",function(e){
     var tag=(e.target.tagName||"").toLowerCase();
-    if(e.key==="ArrowRight"){e.preventDefault();cut(1)}
-    else if(e.key==="ArrowLeft"){e.preventDefault();cut(-1)}
-    else if(e.key==="Escape"){if(isFilm()) play()}
-    else if(tag==="button"||tag==="a") return;
+    if(e.key==="ArrowRight"){e.preventDefault();go((cur+1)%CLIPS.length)}
+    else if(e.key==="ArrowLeft"){e.preventDefault();go((cur-1+CLIPS.length)%CLIPS.length)}
+    else if(e.key==="Escape"){if(isFilm()||tab!=="reel") play()}
+    else if(tag==="button"||tag==="a"||tag==="summary") return;
     else if(e.key===" "){e.preventDefault();playing?stop():play()}
     else if(e.key==="Enter"){openFilm()}
   });
 
   function loop(now){
     if(playing&&!document.hidden&&!dragging){
-      if(last){
-        var dt=Math.min(.1,(now-last)/1000);
-        seek(t+dt);
-      }
+      if(last) seek(t+Math.min(.1,(now-last)/1000));
       last=now;
     }else last=0;
     requestAnimationFrame(loop);
   }
-
-  seek(0); display(0); ui();
+  load(0); seek(t); ui();
   requestAnimationFrame(loop);
 })();
 </script>
